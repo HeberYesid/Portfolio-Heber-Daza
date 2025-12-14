@@ -1,13 +1,20 @@
-import { Mail, Linkedin, Github} from 'lucide-react'
+import { Mail, Linkedin, Github, Phone } from 'lucide-react'
 
 const Contact = () => {
   const contactMethods = [
     {
       icon: Mail,
       title: 'Email',
-      value: 'Envíame un correo',
+      value: 'heberyesiddazatoloza@gmail.com',
       link: 'mailto:heberyesiddazatoloza@gmail.com',
       color: 'from-red-500 to-orange-500',
+    },
+    {
+      icon: Phone,
+      title: 'Teléfono',
+      value: '(+57) 313 3331900',
+      link: 'tel:+573133331900',
+      color: 'from-green-500 to-emerald-500',
     },
     {
       icon: Linkedin,

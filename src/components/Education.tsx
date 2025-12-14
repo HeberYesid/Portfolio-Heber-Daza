@@ -22,11 +22,11 @@ const Education = () => {
               
               <div className="flex-grow">
                 <h3 className="text-2xl font-bold mb-2">Ingeniería de Sistemas</h3>
-                <p className="text-lg text-gray-700 dark:text-gray-300 mb-3">Universidad</p>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-3">Universidad de Santander</p>
                 
                 <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-6">
                   <BookOpen className="w-4 h-4" />
-                  <span>6to Semestre - Actualmente cursando</span>
+                  <span>7 Semestre - Actualmente cursando (2023 - Presente)</span>
                 </div>
 
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">

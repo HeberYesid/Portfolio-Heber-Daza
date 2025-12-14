@@ -31,9 +31,9 @@ const About = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-4">¿Quién soy?</h3>
                 <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  Soy un estudiante de Ingeniería de Sistemas apasionado por la tecnología y el aprendizaje continuo. 
-                  Me caracterizo por mi capacidad de adaptación rápida ante nuevos retos y mi entusiasmo por trabajar 
-                  en equipo para desarrollar soluciones innovadoras que generen un impacto positivo.
+                  Backend developer en formación en ingeniería de sistemas, con experiencia en desarrollo de APIs REST usando Python, Django REST Framework. 
+                  Con conocimientos en bases de datos relacionales, control de versiones con Git y programación orientada a objetos. 
+                  Enfocado en el aprendizaje continuo y en la construcción de soluciones backend mantenibles, aplicando buenas prácticas de desarrollo y resolución de problemas técnicos.
                 </p>
               </div>
             </div>

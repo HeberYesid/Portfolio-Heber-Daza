@@ -16,11 +16,11 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Heber Yesid
+            Heber Yesid Daza Toloza
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4">
-            Estudiante de Ingeniería de Sistemas
+            Backend Developer
           </p>
           
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">

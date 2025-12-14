@@ -4,28 +4,28 @@ const Skills = () => {
   const skillCategories = [
     {
       icon: Code2,
-      title: 'Desarrollo Frontend',
-      skills: ['HTML', 'CSS', 'JavaScript', 'React'],
+      title: 'Backend & Frameworks',
+      skills: ['Python', 'Django', 'Django REST Framework', 'NodeJS', 'API REST', 'OpenAPI / Swagger'],
     },
     {
       icon: Database,
-      title: 'Backend & Bases de Datos',
-      skills: ['Python', 'Django', 'NodeJS', 'PostgreSQL', 'Análisis de Datos'],
+      title: 'Bases de Datos',
+      skills: ['PostgreSQL', 'MySQL'],
     },
     {
       icon: Cloud,
       title: 'DevOps & Cloud',
-      skills: ['Docker', 'Github', 'Arquitectura en la Nube'],
+      skills: ['Docker', 'CI/CD', 'AWS (Básico)', 'Google Cloud (Básico)', 'Git', 'GitHub'],
     },
     {
       icon: Shield,
       title: 'Seguridad & Testing',
-      skills: ['Seguridad de la Información', 'Pruebas de Software', 'RestAPI'],
+      skills: ['JWT', 'Pytest', 'Seguridad de la Información'],
     },
     {
       icon: Wrench,
-      title: 'Otras Tecnologías',
-      skills: ['Power BI', 'Ofimática', 'Apps Móviles', 'Patrones de Diseño', 'Estructuras de Datos', 'Model Context Protocol'],
+      title: 'Otras Habilidades',
+      skills: ['Principios SOLID', 'DRY', 'KISS', 'Patrones de Diseño', 'Scrum', 'Trello', 'Jira', 'VS Code'],
     },
   ]
 

@@ -3,6 +3,18 @@ import { Briefcase, Calendar } from 'lucide-react'
 const Experience = () => {
   const experiences = [
     {
+      role: 'Proyectos Autodidactas - DevTrack',
+      company: 'Proyecto Personal',
+      period: '2024 - Presente',
+      responsibilities: [
+        'Plataforma full-stack para la gestión académica que permite administrar cursos, inscribir estudiantes y registrar resultados.',
+        'Cálculo automático de notas, roles diferenciados y notificaciones automáticas.',
+        'Construida con Django REST Framework (Backend) y React (Frontend).',
+        'Implementación de JWT, operaciones masivas por CSV e integración con servicios de IA y nube.',
+        'Arquitectura escalable y base de datos relacional.',
+      ],
+    },
+    {
       role: 'Auxiliar de Sistemas',
       company: 'Empresa',
       period: 'Junio 2024 - Febrero 2025',
