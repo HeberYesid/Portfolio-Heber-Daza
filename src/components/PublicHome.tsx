@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react'
 import Header from './Header'
 import Hero from './Hero'
 import About from './About'
-import Experience from './Experience'
-import Education from './Education'
 import Skills from './Skills'
-import Projects from './Projects'
 import Footer from './Footer'
 import AITools from './AITools'
 
@@ -39,10 +36,7 @@ const PublicHome = () => {
       <main>
         <Hero />
         <About />
-        <Experience />
-        <Education />
         <Skills />
-        <Projects />
         <AITools />
       </main>
       <Footer />

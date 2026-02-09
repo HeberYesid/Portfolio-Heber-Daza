@@ -19,6 +19,10 @@ const Hero = () => {
             Heber Yesid Daza Toloza
           </h1>
           
+          <p className="text-xl md:text-2xl text-gray-800 dark:text-gray-200 mb-2 font-semibold">
+            Cúcuta, Colombia
+          </p>
+
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4">
             Backend Developer
           </p>

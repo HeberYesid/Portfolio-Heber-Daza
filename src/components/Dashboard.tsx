@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../supabaseClient'
 import Contact from './Contact'
+import Experience from './Experience'
+import Education from './Education'
+import Projects from './Projects'
 import { LogOut, Video } from 'lucide-react'
 
 const Dashboard = () => {
@@ -37,6 +40,11 @@ const Dashboard = () => {
             Aquí tienes acceso a información exclusiva y medios de contacto directos.
           </p>
         </section>
+
+        {/* Detailed Experience & Education */}
+        <Experience />
+        <Projects />
+        <Education />
 
         {/* Video Section */}
         <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">

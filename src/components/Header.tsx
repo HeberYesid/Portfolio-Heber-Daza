@@ -12,10 +12,8 @@ const Header = ({ darkMode, toggleDarkMode }: HeaderProps) => {
   const menuItems = [
     { label: 'Inicio', href: '#home' },
     { label: 'Sobre Mí', href: '#about' },
-    { label: 'Experiencia', href: '#experience' },
-    { label: 'Educación', href: '#education' },
     { label: 'Habilidades', href: '#skills' },
-    { label: 'Proyectos', href: '#projects' },
+    { label: 'Herramientas IA', href: '#ai-tools' },
   ]
 
   return (
