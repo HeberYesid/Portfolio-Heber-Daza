@@ -16,7 +16,6 @@ const Header = ({ darkMode, toggleDarkMode }: HeaderProps) => {
     { label: 'Educación', href: '#education' },
     { label: 'Habilidades', href: '#skills' },
     { label: 'Proyectos', href: '#projects' },
-    { label: 'Contacto', href: '#contact' },
   ]
 
   return (
@@ -39,6 +38,14 @@ const Header = ({ darkMode, toggleDarkMode }: HeaderProps) => {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="/login"
+                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
+              >
+                Acceso Privado
+              </a>
+            </li>
           </ul>
 
           {/* Theme Toggle */}
