@@ -1,5 +1,3 @@
-import React from 'react';
-
 const AITools = () => {
   return (
     <section id="ai-tools" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-200">
