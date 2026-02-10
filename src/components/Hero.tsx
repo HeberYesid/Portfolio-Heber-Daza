@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react'
+import { Github, Linkedin, ChevronDown } from 'lucide-react'
 
 const Hero = () => {
   return (
@@ -50,13 +50,6 @@ const Hero = () => {
               aria-label="LinkedIn"
             >
               <Linkedin className="w-6 h-6" />
-            </a>
-            <a
-              href="#contact"
-              className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              aria-label="Contact"
-            >
-              <Mail className="w-6 h-6" />
             </a>
           </div>
 
