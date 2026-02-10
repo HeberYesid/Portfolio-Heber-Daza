@@ -14,7 +14,27 @@ const AITools = () => {
               <span className="font-semibold text-gray-800 dark:text-white">GitHub Copilot</span>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Asistencia en código y refactorización</p>
             </div>
-            {/* Add more tools if known, for now just Copilot as requested/confirmed */}
+            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
+              <span className="font-semibold text-gray-800 dark:text-white">VS Code</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Entorno de desarrollo principal</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
+              <span className="font-semibold text-gray-800 dark:text-white">OpenCode</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Agente de codificación de IA de código abierto</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
+              <span className="font-semibold text-gray-800 dark:text-white">OpenClaw</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Asistente personal con IA</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
+              <span className="font-semibold text-gray-800 dark:text-white">Antigravity</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Entorno de desarrollo secundario</p>
+            </div>
+            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
+              <span className="font-semibold text-gray-800 dark:text-white">Warp</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Terminal inteligente con IA</p>
+            </div>
+            
           </div>
         </div>
       </div>
