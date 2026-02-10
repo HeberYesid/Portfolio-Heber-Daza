@@ -27,6 +27,7 @@ export default function Login() {
     setLoading(false)
   }
 
+  /*
   const handleSignUp = async (e: React.FormEvent) => {
       e.preventDefault();
       setLoading(true);
@@ -44,6 +45,7 @@ export default function Login() {
       }
       setLoading(false);
   }
+  */
 
   return (
     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-50 dark:bg-gray-900 px-4">
@@ -88,6 +90,7 @@ export default function Login() {
             >
                 {loading ? 'Cargando...' : 'Iniciar Sesión'}
             </button>
+            {/* 
             <button
                 onClick={handleSignUp}
                 disabled={loading}
@@ -95,6 +98,7 @@ export default function Login() {
             >
                 Registrarse
             </button>
+             */}
           </div>
         </form>
         <div className="mt-6 text-center">
