@@ -13,7 +13,7 @@ const Contact = () => {
       icon: Phone,
       title: 'Teléfono',
       value: '(+57) 313 3331900',
-      link: 'tel:+573133331900',
+      link: 'https://wa.me/+573133331900',
       color: 'from-green-500 to-emerald-500',
     },
     {
