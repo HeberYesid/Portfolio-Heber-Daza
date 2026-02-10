@@ -74,7 +74,7 @@ const Contact = () => {
               Hablemos sobre cómo puedo contribuir a tu próximo proyecto
             </p>
             <a
-              href="mailto:heberyesid@example.com"
+              href="mailto:heberyesiddazatoloza@gmail.com"
               className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all"
             >
               Enviar Mensaje
