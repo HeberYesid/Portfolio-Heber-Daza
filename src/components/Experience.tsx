@@ -5,7 +5,7 @@ const Experience = () => {
     {
       role: 'Proyectos Autodidactas - DevTrack',
       company: 'Proyecto Personal',
-      period: '2024 - Presente',
+      period: '2024 - Evolución Continua',
       responsibilities: [
         'Plataforma full-stack para la gestión académica que permite administrar cursos, inscribir estudiantes y registrar resultados.',
         'Cálculo automático de notas, roles diferenciados y notificaciones automáticas.',
