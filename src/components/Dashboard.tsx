@@ -4,6 +4,7 @@ import Contact from './Contact'
 import Experience from './Experience'
 import Education from './Education'
 import Projects from './Projects'
+import UpdatePassword from './UpdatePassword'
 import { LogOut, Video } from 'lucide-react'
 
 const Dashboard = () => {
@@ -40,6 +41,8 @@ const Dashboard = () => {
             Aquí tienes acceso a información exclusiva y medios de contacto directos.
           </p>
         </section>
+
+        <UpdatePassword />
 
         {/* Detailed Experience & Education */}
         <Experience />

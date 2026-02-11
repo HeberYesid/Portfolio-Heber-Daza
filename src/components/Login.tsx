@@ -9,6 +9,14 @@ export default function Login() {
   const navigate = useNavigate()
   const [errorMsg, setErrorMsg] = useState('')
 
+  React.useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        navigate('/dashboard')
+      }
+    })
+  }, [navigate])
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
