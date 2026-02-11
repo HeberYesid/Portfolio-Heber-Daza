@@ -3,19 +3,19 @@ import { ExternalLink, Github, FolderGit2 } from 'lucide-react'
 const Projects = () => {
   const projects = [
     {
-      title: 'BlogFullStack',
-      description: 'Plataforma de blog desarrollada con tecnologías full stack. Permite crear, editar y gestionar publicaciones de manera dinámica con una interfaz moderna y responsiva.',
-      tech: ['JavaScript', 'NodeJS', 'Express', 'MongoDB'],
-      github: 'https://github.com/HeberYesid/BlogFullStack',
-      demo: null,
-      featured: true,
-    },
-    {
       title: 'DevTrack',
       description: 'Sistema web Django para seguimiento automático de estadísticas de ejercicios de programación. Ayuda a desarrolladores a monitorear su progreso y mejorar sus habilidades.',
       tech: ['Python', 'Django', 'JavaScript', 'PostgreSQL'],
       github: 'https://github.com/HeberYesid/DevTrack',
       demo: 'https://dev-track-lyart.vercel.app/',
+      featured: true,
+    },
+    {
+      title: 'BlogFullStack',
+      description: 'Plataforma de blog desarrollada con tecnologías full stack. Permite crear, editar y gestionar publicaciones de manera dinámica con una interfaz moderna y responsiva.',
+      tech: ['JavaScript', 'NodeJS', 'Express', 'MongoDB'],
+      github: 'https://github.com/HeberYesid/BlogFullStack',
+      demo: null,
       featured: true,
     },
     {
