@@ -11,6 +11,14 @@ const Projects = () => {
       featured: true,
     },
     {
+      title: 'Web Scrapping',
+      description: 'Herramienta de web scrapping + alertas bot de telegram',
+      tech: ['Python', 'BeautifulSoup', 'Requests', 'Telegram Bot API'],
+      github: 'https://github.com/HeberYesid/webscrapping',
+      demo: null,
+      featured: true,
+    },
+    {
       title: 'BlogFullStack',
       description: 'Plataforma de blog desarrollada con tecnologías full stack. Permite crear, editar y gestionar publicaciones de manera dinámica con una interfaz moderna y responsiva.',
       tech: ['JavaScript', 'NodeJS', 'Express', 'MongoDB'],
