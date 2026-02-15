@@ -5,7 +5,7 @@ const Skills = () => {
     {
       icon: Code2,
       title: 'Backend & Frameworks',
-      skills: ['Python', 'Django', 'Django REST Framework', 'NodeJS', 'API REST', 'OpenAPI / Swagger'],
+      skills: ['Python', 'Django', 'FastAPI', 'TypeScript', 'NodeJS','ExpressJS', 'API REST', 'OpenAPI / Swagger'],
     },
     {
       icon: Database,
@@ -15,17 +15,17 @@ const Skills = () => {
     {
       icon: Cloud,
       title: 'DevOps & Cloud',
-      skills: ['Docker', 'CI/CD', 'AWS (Básico)', 'Google Cloud (Básico)', 'Git', 'GitHub'],
+      skills: ['CI/CD', 'AWS', 'Google Cloud', 'Git', 'GitHub'],
     },
     {
       icon: Shield,
       title: 'Seguridad & Testing',
-      skills: ['JWT', 'Pytest', 'Seguridad de la Información'],
+      skills: ['JWT', 'Pytest', 'Vitest', 'OWASP 10'],
     },
     {
       icon: Wrench,
       title: 'Otras Habilidades',
-      skills: ['Principios SOLID', 'DRY', 'KISS', 'Patrones de Diseño', 'Scrum', 'Trello', 'Jira', 'VS Code'],
+      skills: ['Principios SOLID', 'DRY', 'KISS', 'Patrones de Diseño', 'Scrum', 'Trello', 'Jira', 'VS Code','Github Copilot','OpenCode'],
     },
   ]
 

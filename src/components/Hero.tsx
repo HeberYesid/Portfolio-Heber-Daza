@@ -27,7 +27,7 @@ const Hero = () => {
           </p>
 
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-4">
-            Backend Developer
+            Fullstack Developer
           </p>
           
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">

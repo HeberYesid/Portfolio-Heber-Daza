@@ -31,9 +31,11 @@ const About = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-4">¿Quién soy?</h3>
                 <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  Backend developer en formación en ingeniería de sistemas, con experiencia en desarrollo de APIs REST usando Python, Django REST Framework. 
-                  Con conocimientos en bases de datos relacionales, control de versiones con Git y programación orientada a objetos. 
-                  Enfocado en el aprendizaje continuo y en la construcción de soluciones backend mantenibles, aplicando buenas prácticas de desarrollo y resolución de problemas técnicos.
+                  Desarrollador enfocado en la creación de aplicaciones web robustas, escalables y eficientes. Cuento con una sólida base técnica en el ecosistema Python (Django) y TypeScript (Node.js) para el desarrollo de APIs REST, complementado con el uso de tecnologías frontend modernas como React y Vite.
+
+Poseo conocimientos sólidos en el diseño de bases de datos relacionales (PostgreSQL, MySQL) y en la implementación de estructuras de datos y algoritmos para la optimización de procesos. Mi enfoque de desarrollo se basa en la aplicación de patrones de diseño y principios de arquitectura de software para garantizar soluciones mantenibles y de alta calidad.
+
+Comprometido con las mejores prácticas, el control de versiones con Git/GitHub y con una creciente adopción de tecnologías Cloud para el despliegue de soluciones. Apasionado por la resolución de problemas técnicos complejos y el aprendizaje continuo.
                 </p>
               </div>
             </div>

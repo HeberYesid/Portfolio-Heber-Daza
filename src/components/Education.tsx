@@ -30,9 +30,7 @@ const Education = () => {
                 </div>
 
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Desarrollando habilidades en desarrollo de software, arquitectura de sistemas, 
-                  bases de datos, y tecnologías emergentes. Enfocado en crear soluciones tecnológicas 
-                  innovadoras y eficientes que respondan a las necesidades del mundo actual.
+                  Desarrollando habilidades en desarrollo de software, estructuras de datos, patrones de diseño, arquitectura de sistemas, bases de datos.
                 </p>
               </div>
             </div>
