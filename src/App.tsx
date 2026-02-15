@@ -25,7 +25,7 @@ function AppRoutes({
   useEffect(() => {
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, _session) => {
+    } = supabase.auth.onAuthStateChange((event) => {
       if (event === "PASSWORD_RECOVERY") {
         navigate("/dashboard");
       } else if (event === "SIGNED_IN") {

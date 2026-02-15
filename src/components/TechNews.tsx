@@ -34,7 +34,7 @@ const TechNews = () => {
       });
 
       const stories = await Promise.all(storyPromises);
-      return stories.map((story: any) => ({
+      return stories.map((story: { id: number; title: string; url?: string; by: string; score: number; descendants: number; time: number }) => ({
         id: story.id,
         title: story.title,
         url: story.url || `https://news.ycombinator.com/item?id=${story.id}`,
@@ -57,7 +57,7 @@ const TechNews = () => {
       const response = await fetch('https://dev.to/api/articles?top=7&per_page=10');
       const articles = await response.json();
       
-      return articles.map((article: any) => ({
+      return articles.map((article: { id: number; title: string; url: string; user: { name: string }; positive_reactions_count: number; comments_count: number; published_at: string; tag_list: string[] }) => ({
         id: article.id,
         title: article.title,
         url: article.url,
@@ -88,6 +88,7 @@ const TechNews = () => {
 
   useEffect(() => {
     fetchAllNews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filteredNews = activeTab === 'all' 

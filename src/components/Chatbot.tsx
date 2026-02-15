@@ -85,11 +85,11 @@ const Chatbot = () => {
           return updated;
         });
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error('Error DETALLADO al generar respuesta:', error); 
       let errorMessage = 'Lo siento, ha ocurrido un error al procesar tu solicitud.';
       
-      if (error.message) {
+      if (error instanceof Error) {
         errorMessage += ` Detalles: ${error.message}`;
       }
       
@@ -194,11 +194,11 @@ const Chatbot = () => {
                    <div className="prose dark:prose-invert max-w-none prose-sm prose-p:my-1 prose-headings:my-2 prose-strong:text-purple-600 dark:prose-strong:text-purple-400">
                      <ReactMarkdown 
                        components={{
-                         p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                         ul: ({node, ...props}) => <ul className="list-disc ml-4 mb-2 space-y-1" {...props} />,
-                         li: ({node, ...props}) => <li className="mb-0" {...props} />,
-                         strong: ({node, ...props}) => <strong className="font-bold text-gray-900 dark:text-white" {...props} />,
-                         a: ({node, ...props}) => <a className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />
+                         p: ({...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                         ul: ({...props}) => <ul className="list-disc ml-4 mb-2 space-y-1" {...props} />,
+                         li: ({...props}) => <li className="mb-0" {...props} />,
+                         strong: ({...props}) => <strong className="font-bold text-gray-900 dark:text-white" {...props} />,
+                         a: ({...props}) => <a className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />
                        }}
                      >
                        {message.content}
