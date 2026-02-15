@@ -17,7 +17,7 @@ const Projects = () => {
     },
     {
       title: 'Web Scrapping',
-      description: 'Herramienta de web scrapping + alertas bot de telegram',
+      description: 'Monitor de precios automatizado. Extracción de datos en tiempo real con alertas inmediatas a Telegram, diseñado para la toma de decisiones estratégicas.',
       tech: ['Python', 'BeautifulSoup', 'Requests', 'Telegram Bot API'],
       github: 'https://github.com/HeberYesid/webscrapping',
       demo: null,
@@ -48,11 +48,11 @@ const Projects = () => {
       featured: false,
     },
     {
-      title: 'django-auth-crud',
-      description: 'Aplicación de gestión de tareas (To-Do App) desarrollada con Django, que implementa un sistema completo de autenticación de usuarios y operaciones CRUD.',
-      tech: ['Python', 'Django', 'Render', 'PostgreSQL'],
-      github: 'https://github.com/HeberYesid/django-auth-crud',
-      demo: 'https://django-auth-crud-y118.onrender.com/',
+      title: 'BlogFullStack',
+      description: 'Plataforma de blog desarrollada con tecnologías full stack. Permite crear, editar y gestionar publicaciones de manera dinámica.',
+      tech: ['JavaScript', 'React', 'Vercel'],
+      github: 'https://github.com/HeberYesid/BlogFullStack',
+      demo: 'https://blog-full-stack-xi.vercel.app/',
       featured: false,
     }
   ]
