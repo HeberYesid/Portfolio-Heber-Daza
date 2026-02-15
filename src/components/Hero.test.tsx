@@ -6,7 +6,7 @@ describe('Hero', () => {
     render(<Hero />)
     
     expect(screen.getByText(/Heber Yesid Daza Toloza/i)).toBeInTheDocument()
-    expect(screen.getByText(/Backend Developer/i)).toBeInTheDocument()
+    expect(screen.getByText(/Fullstack Developer/i)).toBeInTheDocument()
     expect(screen.getByText(/Cúcuta, Colombia/i)).toBeInTheDocument()
   })
 
