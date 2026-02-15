@@ -7,7 +7,7 @@ import Projects from './Projects'
 import UpdatePassword from './UpdatePassword'
 import Chatbot from './Chatbot'
 import TechNews from './TechNews'
-import { LogOut, Video } from 'lucide-react'
+import { LogOut, Video, FileDown, Download } from 'lucide-react'
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -44,6 +44,28 @@ const Dashboard = () => {
           </p>
         </section>
 
+        {/* CV Download Section */}
+        <section className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 shadow-lg text-white flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm">
+              <FileDown className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold">Currículum Vitae</h2>
+              <p className="opacity-90 text-sm md:text-base">Descarga mi perfil profesional detallado en formato PDF</p>
+            </div>
+          </div>
+          <a
+            href="./Hoja de Vida Heber Yesid Daza Toloza (3).pdf" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-3 bg-white text-blue-600 rounded-xl font-bold hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap"
+          >
+            <Download className="w-5 h-5" />
+            Descargar CV
+          </a>
+        </section>
+
         {/* Tech News Aggregator */}
         <TechNews />
 
@@ -67,7 +89,7 @@ const Dashboard = () => {
              {/* Replace this iframe with your actual video source */}
              <iframe 
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/" 
+                src="LINK VIDEO YOUTUBE/" 
                 title="Video Presentation" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

@@ -5,7 +5,7 @@ const Skills = () => {
     {
       icon: Code2,
       title: 'Backend & Frameworks',
-      skills: ['Python', 'Django', 'FastAPI', 'TypeScript', 'NodeJS','ExpressJS', 'API REST', 'OpenAPI / Swagger'],
+      skills: ['Python', 'Django', 'FastAPI', 'TypeScript', 'NodeJS','ExpressJS' ],
     },
     {
       icon: Database,
@@ -25,7 +25,7 @@ const Skills = () => {
     {
       icon: Wrench,
       title: 'Otras Habilidades',
-      skills: ['Principios SOLID', 'DRY', 'KISS', 'Patrones de Diseño', 'Scrum', 'Trello', 'Jira', 'VS Code','Github Copilot','OpenCode'],
+      skills: ['Principios SOLID','API REST', 'DRY', 'KISS', 'Patrones de Diseño', 'Scrum', 'Trello', 'Jira', 'VS Code','Github Copilot','OpenCode'],
     },
   ]
 
