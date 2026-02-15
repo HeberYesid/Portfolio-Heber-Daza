@@ -15,6 +15,13 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
+  const suggestedQuestions = [
+    "¿Cuáles son tus habilidades técnicas?",
+    "Háblame de tu experiencia laboral",
+    "¿Qué proyectos has desarrollado?",
+    "¿Cómo puedo contactarte?",
+  ];
+
   const scrollToBottom = () => {
     if (chatContainerRef.current) {
       const { scrollHeight, clientHeight } = chatContainerRef.current;
@@ -26,13 +33,10 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages, isLoading]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
+  const sendMessage = async (messageText: string) => {
+    if (!messageText.trim() || isLoading) return;
 
-    const userMessage = input.trim();
-    setInput('');
-    const newMessages = [...messages, { role: 'user', content: userMessage } as Message];
+    const newMessages = [...messages, { role: 'user', content: messageText } as Message];
     setMessages(newMessages);
     setIsLoading(true);
 
@@ -64,8 +68,7 @@ const Chatbot = () => {
         },
       });
 
-      // Inject context in the prompt since gemini-pro might not support systemInstruction freely in all regions/versions
-      const finalPrompt = `${PORTFOLIO_CONTEXT}\n\nPregunta del usuario: ${userMessage}`;
+      const finalPrompt = `${PORTFOLIO_CONTEXT}\n\nPregunta del usuario: ${messageText}`;
 
       const result = await chat.sendMessageStream(finalPrompt);
       
@@ -102,6 +105,12 @@ const Chatbot = () => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    sendMessage(input);
+    setInput('');
+  };
+
   return (
     <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden flex flex-col h-[600px] w-full max-w-4xl mx-auto">
       {/* Header */}
@@ -125,13 +134,29 @@ const Chatbot = () => {
         className="flex-1 overflow-y-auto p-4 space-y-6 bg-gray-50/50 dark:bg-gray-900/50 scroll-smooth"
       >
         {messages.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full text-center text-gray-400 space-y-4">
-            <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center">
-              <MessageSquare className="w-8 h-8 text-blue-500" />
+          <div className="flex flex-col items-center justify-center h-full text-center text-gray-400 space-y-8 px-4">
+            <div className="flex flex-col items-center space-y-4">
+              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center animate-bounce duration-[2000ms]">
+                <MessageSquare className="w-8 h-8 text-blue-500" />
+              </div>
+              <div>
+                <p className="text-lg font-medium text-gray-600 dark:text-gray-300">¡Hola! Soy el asistente virtual.</p>
+                <p className="text-sm">Selecciona una pregunta o escribe la tuya.</p>
+              </div>
             </div>
-            <div>
-              <p className="text-lg font-medium text-gray-600 dark:text-gray-300">¡Hola! Soy el asistente virtual.</p>
-              <p className="text-sm">Pregúntame sobre la experiencia, proyectos o habilidades de Heber.</p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
+              {suggestedQuestions.map((question, index) => (
+                <button
+                  key={index}
+                  onClick={() => sendMessage(question)}
+                  className="p-3 text-sm text-left bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all group"
+                >
+                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 font-medium">
+                    {question}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
         )}
