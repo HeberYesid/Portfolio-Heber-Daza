@@ -6,6 +6,7 @@ import Education from './Education'
 import Projects from './Projects'
 import UpdatePassword from './UpdatePassword'
 import Chatbot from './Chatbot'
+import TechNews from './TechNews'
 import { LogOut, Video } from 'lucide-react'
 
 const Dashboard = () => {
@@ -42,6 +43,9 @@ const Dashboard = () => {
             Aquí tienes acceso a información exclusiva y medios de contacto directos.
           </p>
         </section>
+
+        {/* Tech News Aggregator */}
+        <TechNews />
 
         {/* AI Chatbot Section */}
         <Chatbot />
