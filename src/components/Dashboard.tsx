@@ -56,7 +56,7 @@ const Dashboard = () => {
             </div>
           </div>
           <a
-            href="./Hoja de Vida Heber Yesid Daza Toloza (3).pdf" 
+            href="/CV_Heber_Yesid_Daza.pdf" 
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-3 bg-white text-blue-600 rounded-xl font-bold hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2 whitespace-nowrap"
