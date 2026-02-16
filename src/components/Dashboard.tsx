@@ -79,24 +79,7 @@ const Dashboard = () => {
         <Projects />
         <Education />
 
-        {/* Video Section */}
-        <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-          <div className="flex items-center gap-2 mb-6">
-            <Video className="w-6 h-6 text-blue-600" />
-            <h2 className="text-2xl font-bold">Video de Presentación</h2>
-          </div>
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-900 shadow-inner">
-             {/* Replace this iframe with your actual video source */}
-             <iframe 
-                className="w-full h-full"
-                src="LINK VIDEO YOUTUBE/" 
-                title="Video Presentation" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-            ></iframe>
-          </div>
-        </section>
+      
 
         {/* Contact Section */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
