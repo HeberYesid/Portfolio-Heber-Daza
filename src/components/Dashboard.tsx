@@ -7,7 +7,7 @@ import Projects from './Projects'
 import UpdatePassword from './UpdatePassword'
 import Chatbot from './Chatbot'
 import TechNews from './TechNews'
-import { LogOut, Video, FileDown, Download } from 'lucide-react'
+import { LogOut, FileDown, Download } from 'lucide-react'
 
 const Dashboard = () => {
   const navigate = useNavigate()
