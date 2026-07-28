@@ -54,7 +54,7 @@ const Chatbot = () => {
 
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-flash-latest',
       });
 
       const chat = model.startChat({
@@ -62,14 +62,16 @@ const Chatbot = () => {
           role: m.role === 'model' ? 'model' : 'user',
           parts: [{ text: m.content }],
         })),
+        systemInstruction: {
+          role: 'user',
+          parts: [{ text: PORTFOLIO_CONTEXT }],
+        },
         generationConfig: {
-          maxOutputTokens: 1000,
+          maxOutputTokens: 4000,
         },
       });
 
-      const finalPrompt = `${PORTFOLIO_CONTEXT}\n\nPregunta del usuario: ${messageText}`;
-
-      const result = await chat.sendMessageStream(finalPrompt);
+      const result = await chat.sendMessageStream(messageText);
 
       let fullResponse = '';
       setMessages(prev => [...prev, { role: 'model', content: '' }]);
@@ -86,10 +88,25 @@ const Chatbot = () => {
       }
     } catch (error: unknown) {
       console.error('Error DETALLADO al generar respuesta:', error);
-      let errorMessage = 'Lo siento, ha ocurrido un error al procesar tu solicitud.';
+
+      let errorMessage: string;
 
       if (error instanceof Error) {
-        errorMessage += ` Detalles: ${error.message}`;
+        const msg = error.message;
+
+        if (msg.includes('403') || msg.includes('SERVICE_DISABLED')) {
+          errorMessage = 'El servicio de IA no está disponible en este momento. Esto puede deberse a mantenimiento o a que la API no está habilitada en este proyecto. Intenta de nuevo en unos minutos.';
+        } else if (msg.includes('429')) {
+          errorMessage = 'Has alcanzado el limite de uso gratuito de la IA por ahora. La cuota se reinicia automaticamente. Intenta de nuevo mas tarde.';
+        } else if (msg.includes('404')) {
+          errorMessage = 'El modelo de IA solicitado ya no esta disponible. Contacta al administrador para actualizarlo.';
+        } else if (msg.includes('depleted') || msg.includes('prepayment')) {
+          errorMessage = 'Los creditos de la API se han agotado. Contacta al administrador para recargarlos.';
+        } else {
+          errorMessage = 'Ocurrio un error inesperado al comunicarse con la IA. Intenta de nuevo en unos segundos.';
+        }
+      } else {
+        errorMessage = 'Ocurrio un error inesperado. Intenta de nuevo.';
       }
 
       setMessages(prev => [
