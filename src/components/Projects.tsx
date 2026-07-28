@@ -8,59 +8,41 @@ const Projects = () => {
 
   const projects = [
     {
-      title: 'DevTrack',
-      description: 'Sistema web Django para seguimiento automático de estadísticas de ejercicios de programación. Ayuda a desarrolladores a monitorear su progreso y mejorar sus habilidades.',
-      tech: ['Python', 'Django', 'JavaScript', 'PostgreSQL', 'React', 'Vite', 'Vercel', 'Render'],
-      github: 'https://github.com/HeberYesid/DevTrack',
-      demo: 'https://dev-track-lyart.vercel.app/',
+      title: 'Investment Tracker',
+      description: 'Plataforma de seguimiento de inversiones multi-broker. Backend con Next.js/TypeScript y PostgreSQL (Supabase), Row Level Security (RLS) con permisos por roles (OWNER/EDITOR/VIEWER). Suite de 540 tests automatizados (Vitest + Playwright) bajo TDD, cubriendo cálculos financieros, validaciones y parsers CSV. Rate limiting, cacheo con invalidación por tags y manejo tipado de errores en API REST.',
+      tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Supabase', 'Vitest', 'Playwright', 'TDD', 'RLS', 'Vercel'],
+      github: 'https://github.com/HeberYesid/investment-tracker',
+      demo: 'https://investment-tracker-xi-seven.vercel.app/',
       featured: true,
     },
     {
-      title: 'Web Scrapping',
-      description: 'Monitor de precios automatizado. Extracción de datos en tiempo real con alertas inmediatas a Telegram, diseñado para la toma de decisiones estratégicas.',
-      tech: ['Python', 'BeautifulSoup', 'Requests', 'Telegram Bot API'],
-      github: 'https://github.com/HeberYesid/webscrapping',
-      demo: null,
+      title: 'Code Duel',
+      description: 'Plataforma de programación competitiva con backend modular en Java/Spring Boot. Capa de ejecución aislada de código mediante contenedores Docker. Comunicación en tiempo real con WebSocket y autenticación JWT. Cola de matchmaking y máquina de estados para el ciclo de vida del duelo. Monaco Editor integrado en el cliente.',
+      tech: ['Java', 'Spring Boot', 'Docker', 'WebSocket', 'JWT', 'Monaco Editor', 'Render'],
+      github: 'https://github.com/HeberYesid/code-duel',
+      demo: 'https://code-duel-kzhs.onrender.com',
       featured: true,
     },
     {
-      title: 'Ecommerce',
-      description: 'Amazon Ecommerce MVP',
-      tech: ['TypeScript', 'Supabase', 'React', 'Vite', 'Vercel'],
-      github: 'https://github.com/HeberYesid/ecommerce',
-      demo: 'https://ecommerce-tan-six-94.vercel.app/',
+      title: 'Aula AlDía',
+      description: 'Plataforma SaaS educativa multi-tenant con Django/DRF. Aislamiento de datos por inquilino a nivel de query, planes con cuotas configurables. Autenticación JWT con claims tenant-scoped, OAuth2 (Google) y rate limiting con Redis. Máquina de estados transaccional para cierre de períodos académicos. Frontend en React con Context API, guardias de ruta multicapa y renovación de token con cola de concurrencia.',
+      tech: ['Python', 'Django', 'DRF', 'React', 'Redis', 'JWT', 'OAuth2', 'PostgreSQL', 'Vercel'],
+      github: 'https://github.com/HeberYesid/AulaAlDia-frontend',
+      demo: 'https://aula-al-dia-frontend.vercel.app/login',
       featured: true,
     },
     {
-      title: 'Django-auth-crud',
-      description: 'Aplicación de gestión de tareas (To-Do App) desarrollada con Django, que implementa un sistema completo de autenticación de usuarios y operaciones CRUD.',
-      tech: ['Python', 'Django', 'Render', 'PostgreSQL'],
-      github: 'https://github.com/HeberYesid/django-auth-crud',
-      demo: 'https://django-auth-crud-y118.onrender.com/',
+      title: 'Concurrent Scheduler Lab',
+      description: 'Planificador de procesos en Java con Binary Max-Heap y motor de aging dinámico (3 estrategias: lineal, exponencial, escalonada bajo patrón Strategy). Clean Architecture hexagonal con dependencia unidireccional estricta. 23 archivos de test con JUnit 5 y pruebas basadas en propiedades (jqwik), ≥75% branch coverage (JaCoCo), ≥60% mutation score (PIT). Benchmarking con JMH en 4 escalas (1K–500K procesos).',
+      tech: ['Java', 'JUnit 5', 'jqwik', 'JaCoCo', 'PIT', 'JMH', 'Clean Architecture', 'Render'],
+      github: 'https://github.com/HeberYesid/concurrent-scheduler-lab',
+      demo: 'https://concurrent-scheduler-lab.onrender.com',
       featured: false,
     },
-    {
-      title: 'Neobank-frontend',
-      description: 'Dashboard para neobanco. Diseño limpio, moderno y minimalista, optimizado para una experiencia de usuario intuitiva.',
-      tech: ['Javascript', 'React', 'Vercel'],
-      github: 'https://github.com/HeberYesid/neobank-frontend',
-      demo: 'https://neobank-frontend-three.vercel.app/',
-      featured: false,
-    },
-    {
-      title: 'BlogFullStack',
-      description: 'Plataforma de blog desarrollada con tecnologías full stack. Permite crear, editar y gestionar publicaciones de manera dinámica.',
-      tech: ['JavaScript', 'React', 'Vercel'],
-      github: 'https://github.com/HeberYesid/BlogFullStack',
-      demo: 'https://blog-full-stack-xi.vercel.app/',
-      featured: false,
-    }
   ]
 
-  // Sort: featured first, then non-featured
   const sortedProjects = [...projects].sort((a, b) => Number(b.featured) - Number(a.featured))
 
-  // Filter based on selected tab
   const filteredProjects = filter === 'featured'
     ? sortedProjects.filter(p => p.featured)
     : sortedProjects
@@ -71,10 +53,9 @@ const Projects = () => {
         Mis <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Proyectos</span>
       </h2>
       <p className="text-center text-gray-600 dark:text-gray-400 mb-10">
-        Algunos de los proyectos en los que he trabajado
+        Proyectos destacados que reflejan mi experiencia técnica
       </p>
 
-      {/* Filter Buttons */}
       <div className="flex justify-center gap-3 mb-12">
         <button
           onClick={() => setFilter('all')}

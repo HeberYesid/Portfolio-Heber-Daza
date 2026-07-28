@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Github, Phone } from 'lucide-react'
+import { Mail, Linkedin, Github, Phone, Globe } from 'lucide-react'
 
 const Contact = () => {
   const contactMethods = [
@@ -29,7 +29,7 @@ const Contact = () => {
       value: 'Explora mis proyectos',
       link: 'https://github.com/HeberYesid',
       color: 'from-gray-700 to-gray-900',
-    }
+    },
   ]
 
   return (

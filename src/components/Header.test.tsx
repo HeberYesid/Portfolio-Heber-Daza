@@ -10,7 +10,10 @@ describe('Header', () => {
     expect(screen.getByText('Sobre Mí')).toBeInTheDocument()
     expect(screen.getByText('Habilidades')).toBeInTheDocument()
     expect(screen.getByText('Herramientas IA')).toBeInTheDocument()
-    expect(screen.getByText('Acceso Privado')).toBeInTheDocument()
+    expect(screen.getByText('Proyectos')).toBeInTheDocument()
+    expect(screen.getByText('Experiencia')).toBeInTheDocument()
+    expect(screen.getByText('Educación')).toBeInTheDocument()
+    expect(screen.getByText('Contacto')).toBeInTheDocument()
   })
 
   it('calls toggleDarkMode when theme button is clicked', () => {

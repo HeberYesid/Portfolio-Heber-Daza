@@ -3,27 +3,24 @@ import { Briefcase, Calendar } from 'lucide-react'
 const Experience = () => {
   const experiences = [
     {
-      role: 'Proyectos Autodidactas',
-      company: '',
-      period: '2024 - En desarrollo',
+      role: 'Soporte Técnico TI',
+      company: 'EXCOMIN SAS',
+      period: 'Junio 2024 – Febrero 2025',
       responsibilities: [
-        'Desarrollo de aplicaciones web con tecnologías modernas',
-        'Implementación de soluciones innovadoras y escalables',
-        'Construcción de interfaces intuitivas y experiencia de usuario optimizada',
-        'Integración con servicios de IA y nube',
-        'Arquitectura escalable y bases de datos relacionales',
+        'Resolví entre 10 y 30 incidentes de soporte técnico semanales para una base de 20 a 50 usuarios, reduciendo el tiempo promedio de resolución mediante diagnóstico estructurado y documentación de procesos.',
+        'Gestioné control de acceso mediante Active Directory (usuarios, roles y permisos), políticas de backup y recuperación ante desastres.',
+        'Desarrollé y mantuve portales web internos: implementé nuevas funcionalidades (formularios, paneles) y brindé soporte a un CMS (WordPress).',
+        'Administré infraestructura tecnológica y almacenamiento en la nube, incluyendo asignación, adquisición y mantenimiento de equipos.',
       ],
     },
     {
-      role: 'Auxiliar de Sistemas',
+      role: 'Soporte Técnico TI',
       company: 'EXCOMIN SAS',
-      period: 'Junio 2024 - Febrero 2025',
+      period: 'Junio 2022 – Septiembre 2022',
       responsibilities: [
-        'Desarrollo web de aplicaciones internas',
-        'Seguridad de la información y gestión de accesos',
-        'Gestión de infraestructura tecnológica',
-        'Almacenamiento en la nube y respaldos',
-        'Soporte técnico a usuarios finales',
+        'Brindé soporte técnico a usuarios finales, resolviendo incidencias de hardware y software.',
+        'Participé en la gestión de infraestructura tecnológica y mantenimiento de equipos.',
+        'Capacité a empleados en buenas prácticas de seguridad de la información.',
       ],
     },
   ]

@@ -1,31 +1,46 @@
-import { Code2, Database, Cloud, Shield, Wrench } from 'lucide-react'
+import { Code2, Database, Cloud, Shield, Wrench, Brain, Server, Layers } from 'lucide-react'
 
 const Skills = () => {
   const skillCategories = [
     {
       icon: Code2,
-      title: 'Backend & Frameworks',
-      skills: ['Python', 'Django', 'FastAPI', 'TypeScript', 'NodeJS','ExpressJS' ],
+      title: 'Lenguajes de Programación',
+      skills: ['Python', 'Java', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3'],
+    },
+    {
+      icon: Server,
+      title: 'Backend & APIs',
+      skills: ['Spring Boot', 'Django', 'FastAPI', 'Node.js', 'Express', 'REST', 'GraphQL'],
+    },
+    {
+      icon: Layers,
+      title: 'Frontend',
+      skills: ['React', 'Vite'],
     },
     {
       icon: Database,
-      title: 'Bases de Datos',
-      skills: ['PostgreSQL', 'MySQL'],
+      title: 'Bases de Datos & Caché',
+      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+    },
+    {
+      icon: Shield,
+      title: 'Testing & Calidad',
+      skills: ['JUnit', 'Pytest', 'Jest', 'Vitest', 'Playwright', 'SonarQube', 'ESLint'],
     },
     {
       icon: Cloud,
       title: 'DevOps & Cloud',
-      skills: ['CI/CD', 'AWS', 'Google Cloud', 'Git', 'GitHub'],
+      skills: ['Docker', 'AWS', 'GCP', 'GitHub Actions', 'CI/CD'],
     },
     {
-      icon: Shield,
-      title: 'Seguridad & Testing',
-      skills: ['JWT', 'Pytest', 'Vitest', 'OWASP 10'],
+      icon: Brain,
+      title: 'Herramientas & IA',
+      skills: ['Git', 'GitHub', 'Swagger/OpenAPI', 'JWT', 'MCP', 'Claude Code', 'OpenSpec'],
     },
     {
       icon: Wrench,
-      title: 'Otras Habilidades',
-      skills: ['Principios SOLID','API REST', 'DRY', 'KISS', 'Patrones de Diseño', 'Scrum', 'Trello', 'Jira', 'VS Code','Github Copilot','OpenCode'],
+      title: 'Metodologías & Prácticas',
+      skills: ['Scrum', 'Kanban', 'TDD', 'Clean Code', 'SOLID', 'SDD'],
     },
   ]
 
@@ -40,7 +55,7 @@ const Skills = () => {
             Mi stack tecnológico y áreas de especialización
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
             {skillCategories.map((category, index) => (
               <div
                 key={index}

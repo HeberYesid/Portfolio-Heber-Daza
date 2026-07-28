@@ -96,7 +96,7 @@ const TechNews = () => {
     : news.filter(item => item.source.toLowerCase().replace('.', '') === activeTab.replace('.', ''));
 
   return (
-    <section className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-200">
+    <section id="news" className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-200">
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div className="flex items-center gap-3">
           <div className="p-3 bg-indigo-100 dark:bg-indigo-900/30 rounded-xl">
@@ -104,7 +104,7 @@ const TechNews = () => {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Tech News Feed</h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Noticias curadas para desarrolladores</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Últimas noticias y artículos destacados de Hacker News y Dev.to</p>
           </div>
         </div>
         

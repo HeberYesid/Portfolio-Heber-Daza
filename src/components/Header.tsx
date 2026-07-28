@@ -12,8 +12,14 @@ const Header = ({ darkMode, toggleDarkMode }: HeaderProps) => {
   const menuItems = [
     { label: 'Inicio', href: '#home' },
     { label: 'Sobre Mí', href: '#about' },
+    { label: 'Experiencia', href: '#experience' },
     { label: 'Habilidades', href: '#skills' },
-    { label: 'Herramientas IA', href: '#ai-tools' },
+    { label: 'Proyectos', href: '#projects' },
+    { label: 'Educación', href: '#education' },
+    { label: 'Chat IA', href: '#chat' },
+    { label: 'Idiomas', href: '#languages' },
+    { label: 'Tech News', href: '#news' },
+    { label: 'Contacto', href: '#contact' },
   ]
 
   return (
@@ -25,25 +31,17 @@ const Header = ({ darkMode, toggleDarkMode }: HeaderProps) => {
           </a>
 
           {/* Desktop Navigation */}
-          <ul className="hidden md:flex items-center space-x-8">
+          <ul className="hidden md:flex items-center space-x-6">
             {menuItems.map((item) => (
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm"
                 >
                   {item.label}
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="/login"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors text-sm font-medium"
-              >
-                Acceso Privado
-              </a>
-            </li>
           </ul>
 
           {/* Theme Toggle */}
@@ -69,7 +67,7 @@ const Header = ({ darkMode, toggleDarkMode }: HeaderProps) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <ul className="md:hidden mt-4 space-y-4 pb-4">
+          <ul className="md:hidden mt-4 space-y-3 pb-4">
             {menuItems.map((item) => (
               <li key={item.href}>
                 <a

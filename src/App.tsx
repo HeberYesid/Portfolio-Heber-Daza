@@ -1,59 +1,6 @@
 import { useState, useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useNavigate,
-  useLocation,
-} from "react-router-dom";
-import { supabase } from "./supabaseClient";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicHome from "./components/PublicHome";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-function AppRoutes({
-  darkMode,
-  toggleDarkMode,
-}: {
-  darkMode: boolean;
-  toggleDarkMode: () => void;
-}) {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event) => {
-      if (event === "PASSWORD_RECOVERY") {
-        navigate("/dashboard");
-      } else if (event === "SIGNED_IN") {
-        // Redirigir si estamos en la raíz o en login
-        if (location.pathname === "/" || location.pathname === "/login") {
-          navigate("/dashboard");
-        }
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, [navigate, location]);
-
-  return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <PublicHome darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        }
-      />
-      <Route path="/login" element={<Login />} />
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Route>
-    </Routes>
-  );
-}
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -77,7 +24,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <AppRoutes darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Routes>
+        <Route
+          path="/*"
+          element={
+            <PublicHome darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }

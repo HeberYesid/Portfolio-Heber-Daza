@@ -20,7 +20,7 @@ const About = () => {
             Sobre <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Mí</span>
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-400 mb-16 max-w-2xl mx-auto">
-            Estudiante comprometido con el desarrollo de soluciones tecnológicas innovadoras y el crecimiento profesional continuo.
+            Ingeniero de Sistemas en formación con enfoque en backend, Clean Architecture y desarrollo guiado por especificaciones.
           </p>
 
           <div className="bg-white dark:bg-gray-950 rounded-2xl p-8 md:p-12 shadow-lg border border-gray-200 dark:border-gray-800 mb-16">
@@ -31,11 +31,9 @@ const About = () => {
               <div>
                 <h3 className="text-2xl font-bold mb-4">¿Quién soy?</h3>
                 <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  Desarrollador enfocado en la creación de aplicaciones web robustas, escalables y eficientes. Cuento con una sólida base técnica en el ecosistema Python (Django) y TypeScript (Node.js) para el desarrollo de APIs REST, complementado con el uso de tecnologías frontend modernas como React y Vite.
+                  Desarrollador backend especializado en la construcción de sistemas robustos, escalables y de alto rendimiento utilizando Java (Spring Boot) y Python (Django/FastAPI), con capacidad para integrar entornos frontend modernos con React. Mi enfoque de desarrollo se basa en la aplicación rigurosa de Clean Architecture, patrones de diseño, principios SOLID y testing automatizado (TDD), garantizando soluciones mantenibles y de alta calidad técnica.
 
-Poseo conocimientos sólidos en el diseño de bases de datos relacionales (PostgreSQL, MySQL) y en la implementación de estructuras de datos y algoritmos para la optimización de procesos. Mi enfoque de desarrollo se basa en la aplicación de patrones de diseño y principios de arquitectura de software para garantizar soluciones mantenibles y de alta calidad.
-
-Comprometido con las mejores prácticas, el control de versiones con Git/GitHub y con una creciente adopción de tecnologías Cloud para el despliegue de soluciones. Apasionado por la resolución de problemas técnicos complejos y el aprendizaje continuo.
+Poseo experiencia práctica en el diseño de bases de datos relacionales (PostgreSQL, MySQL), arquitecturas multi-tenant con aislamiento de datos, entornos contenerizados con Docker y despliegue en la nube (AWS, GCP). Soy pionero en la optimización del ciclo de vida del desarrollo mediante flujos asistidos por IA (Specification-Driven Development) y diseño guiado por especificaciones, acelerando la entrega de código verificado.
                 </p>
               </div>
             </div>

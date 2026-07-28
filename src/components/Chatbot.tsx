@@ -1,8 +1,39 @@
-import { useState, useRef, useEffect } from 'react';
-import { Send, Bot, User, Loader2, Sparkles, MessageSquare } from 'lucide-react';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { Send, Bot, User, Loader2, Sparkles, MessageSquare, Clock } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { PORTFOLIO_CONTEXT } from '../utils/portfolioContext';
+
+const RATE_LIMIT_KEY = 'chat_rate_limit';
+const MAX_MESSAGES = 20;
+const WINDOW_MS = 60 * 60 * 1000;
+
+interface RateLimit {
+  count: number;
+  resetAt: number;
+}
+
+function getRateLimit(): RateLimit {
+  try {
+    const raw = localStorage.getItem(RATE_LIMIT_KEY);
+    if (!raw) return { count: 0, resetAt: Date.now() + WINDOW_MS };
+    const data = JSON.parse(raw) as RateLimit;
+    if (Date.now() > data.resetAt) return { count: 0, resetAt: Date.now() + WINDOW_MS };
+    return data;
+  } catch {
+    return { count: 0, resetAt: Date.now() + WINDOW_MS };
+  }
+}
+
+function saveRateLimit(data: RateLimit) {
+  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(data));
+}
+
+function formatTimeRemaining(ms: number): string {
+  const minutes = Math.ceil(ms / 60000);
+  if (minutes <= 1) return 'menos de 1 minuto';
+  return `${minutes} minutos`;
+}
 
 interface Message {
   role: 'user' | 'model';
@@ -13,6 +44,10 @@ const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [messagesRemaining, setMessagesRemaining] = useState(() => {
+    const limit = getRateLimit();
+    return Math.max(0, MAX_MESSAGES - limit.count);
+  });
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const suggestedQuestions = [
@@ -33,29 +68,65 @@ const Chatbot = () => {
     scrollToBottom();
   }, [messages, isLoading]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const limit = getRateLimit();
+      setMessagesRemaining(Math.max(0, MAX_MESSAGES - limit.count));
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const isRateLimited = useCallback((): string | null => {
+    const limit = getRateLimit();
+    if (limit.count >= MAX_MESSAGES) {
+      const remaining = limit.resetAt - Date.now();
+      if (remaining > 0) return formatTimeRemaining(remaining);
+      saveRateLimit({ count: 0, resetAt: Date.now() + WINDOW_MS });
+      setMessagesRemaining(MAX_MESSAGES);
+      return null;
+    }
+    return null;
+  }, []);
+
+  const incrementCounter = useCallback(() => {
+    const limit = getRateLimit();
+    limit.count += 1;
+    saveRateLimit(limit);
+    setMessagesRemaining(Math.max(0, MAX_MESSAGES - limit.count));
+  }, []);
+
   const sendMessage = async (messageText: string) => {
     if (!messageText.trim() || isLoading) return;
+
+    const rateLimitError = isRateLimited();
+    if (rateLimitError) {
+      setMessages(prev => [...prev, {
+        role: 'model',
+        content: `Límite de mensajes alcanzado. Podrás enviar más preguntas en ${rateLimitError}.`,
+      }]);
+      return;
+    }
 
     const newMessages = [...messages, { role: 'user', content: messageText } as Message];
     setMessages(newMessages);
     setIsLoading(true);
+    incrementCounter();
 
     try {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-      
       if (!apiKey) {
-        setMessages(prev => [...prev, { 
-          role: 'model', 
-          content: 'Error: La API Key no está configurada. Por favor configura VITE_GEMINI_API_KEY en tu archivo .env' 
+        setMessages(prev => [...prev, {
+          role: 'model',
+          content: 'Error: La API Key no está configurada. Por favor configura VITE_GEMINI_API_KEY en tu archivo .env'
         }]);
         setIsLoading(false);
         return;
       }
 
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ 
-        model: 'gemini-2.5-flash', 
+      const model = genAI.getGenerativeModel({
+        model: 'gemini-2.5-flash',
       });
 
       const chat = model.startChat({
@@ -71,14 +142,14 @@ const Chatbot = () => {
       const finalPrompt = `${PORTFOLIO_CONTEXT}\n\nPregunta del usuario: ${messageText}`;
 
       const result = await chat.sendMessageStream(finalPrompt);
-      
+
       let fullResponse = '';
       setMessages(prev => [...prev, { role: 'model', content: '' }]);
 
       for await (const chunk of result.stream) {
         const chunkText = chunk.text();
         fullResponse += chunkText;
-        
+
         setMessages(prev => {
           const updated = [...prev];
           updated[updated.length - 1] = { role: 'model', content: fullResponse };
@@ -86,13 +157,13 @@ const Chatbot = () => {
         });
       }
     } catch (error: unknown) {
-      console.error('Error DETALLADO al generar respuesta:', error); 
+      console.error('Error DETALLADO al generar respuesta:', error);
       let errorMessage = 'Lo siento, ha ocurrido un error al procesar tu solicitud.';
-      
+
       if (error instanceof Error) {
         errorMessage += ` Detalles: ${error.message}`;
       }
-      
+
       setMessages(prev => [
         ...prev,
         {
@@ -118,13 +189,17 @@ const Chatbot = () => {
         <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shadow-lg">
           <Bot className="w-6 h-6 text-white" />
         </div>
-        <div>
+        <div className="flex-1">
           <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
             AI Assistant <Sparkles className="w-4 h-4 text-yellow-500 animate-pulse" />
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400">
             Pregúntame sobre el perfil de Heber
           </p>
+        </div>
+        <div className="flex items-center gap-1.5 text-xs text-gray-400 dark:text-gray-500 bg-white dark:bg-gray-800 px-3 py-1.5 rounded-full border border-gray-200 dark:border-gray-700">
+          <Clock className="w-3.5 h-3.5" />
+          <span>{messagesRemaining} / {MAX_MESSAGES}</span>
         </div>
       </div>
 

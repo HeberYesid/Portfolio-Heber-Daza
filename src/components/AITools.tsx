@@ -7,34 +7,33 @@ const AITools = () => {
         </h2>
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-            Para la construcción y optimización de este portafolio, me apoyé en las siguientes tecnologías de Inteligencia Artificial:
+            Para la construcción y optimización de este portafolio y mis proyectos, me apoyé en las siguientes tecnologías de Inteligencia Artificial:
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
-              <span className="font-semibold text-gray-800 dark:text-white">GitHub Copilot</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Asistencia en código y refactorización</p>
-            </div>
-            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
-              <span className="font-semibold text-gray-800 dark:text-white">VS Code</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Entorno de desarrollo principal</p>
+              <span className="font-semibold text-gray-800 dark:text-white">Claude Code</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Desarrollo asistido por IA con SDD</p>
             </div>
             <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
               <span className="font-semibold text-gray-800 dark:text-white">OpenCode</span>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Agente de codificación de IA de código abierto</p>
             </div>
             <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
-              <span className="font-semibold text-gray-800 dark:text-white">OpenClaw</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Asistente personal con IA</p>
+              <span className="font-semibold text-gray-800 dark:text-white">OpenSpec</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Diseño guiado por especificaciones</p>
             </div>
             <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
-              <span className="font-semibold text-gray-800 dark:text-white">Antigravity</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Entorno de desarrollo secundario</p>
+              <span className="font-semibold text-gray-800 dark:text-white">MCP</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Model Context Protocol</p>
             </div>
             <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
-              <span className="font-semibold text-gray-800 dark:text-white">Warp</span>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Terminal inteligente con IA</p>
+              <span className="font-semibold text-gray-800 dark:text-white">Skills</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Habilidades y capacidades de la IA</p>
             </div>
-            
+            <div className="bg-white dark:bg-gray-700 px-6 py-4 rounded-lg shadow-md border border-gray-100 dark:border-gray-600">
+              <span className="font-semibold text-gray-800 dark:text-white">VS Code</span>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Editor de código</p>
+            </div>
           </div>
         </div>
       </div>
