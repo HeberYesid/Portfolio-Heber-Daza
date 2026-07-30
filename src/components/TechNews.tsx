@@ -48,9 +48,7 @@ const TechNews = () => {
       }
 
       try {
-        const apiKey = import.meta.env.VITE_GNEWS_API_KEY;
-        const url = `https://gnews.io/api/v4/top-headlines?category=technology&lang=en&max=6&apikey=${apiKey}`;
-        const res = await fetch(url);
+        const res = await fetch('/api/news');
         if (!res.ok) throw new Error(`API ${res.status}`);
         const data = await res.json();
         const fresh = data.articles || [];
