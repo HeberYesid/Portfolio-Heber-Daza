@@ -1,0 +1,482 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-30T00:00:00.000Z",
+  "title": "Design System: Portfolio Heber Daza — PCB Circuit Board",
+  "extensions": {
+    "colorMeta": {
+      "substrate": {
+        "role": "neutral",
+        "displayName": "FR-4 Substrate",
+        "canonical": "#080c08",
+        "tonalRamp": [
+          "oklch(12% 0.006 145)",
+          "oklch(18% 0.007 145)",
+          "oklch(26% 0.007 145)",
+          "oklch(36% 0.006 145)",
+          "oklch(48% 0.005 145)",
+          "oklch(62% 0.004 145)",
+          "oklch(78% 0.003 145)",
+          "oklch(94% 0.002 145)"
+        ]
+      },
+      "plane-ground": {
+        "role": "neutral",
+        "displayName": "Ground Plane",
+        "canonical": "#060a06",
+        "tonalRamp": [
+          "oklch(8% 0.005 145)",
+          "oklch(14% 0.006 145)",
+          "oklch(22% 0.006 145)",
+          "oklch(32% 0.005 145)",
+          "oklch(44% 0.004 145)",
+          "oklch(58% 0.003 145)",
+          "oklch(74% 0.002 145)",
+          "oklch(92% 0.002 145)"
+        ]
+      },
+      "substrate-raised": {
+        "role": "neutral",
+        "displayName": "Raised Chip Body",
+        "canonical": "#0e120e",
+        "tonalRamp": [
+          "oklch(15% 0.006 145)",
+          "oklch(22% 0.007 145)",
+          "oklch(30% 0.007 145)",
+          "oklch(40% 0.006 145)",
+          "oklch(52% 0.005 145)",
+          "oklch(66% 0.004 145)",
+          "oklch(82% 0.003 145)",
+          "oklch(96% 0.002 145)"
+        ]
+      },
+      "trace": {
+        "role": "primary",
+        "displayName": "Copper Trace (Cyan)",
+        "canonical": "#00c8c8",
+        "tonalRamp": [
+          "oklch(15% 0.04 198)",
+          "oklch(28% 0.06 198)",
+          "oklch(42% 0.08 198)",
+          "oklch(56% 0.10 198)",
+          "oklch(68% 0.12 198)",
+          "oklch(80% 0.14 198)",
+          "oklch(88% 0.10 198)",
+          "oklch(96% 0.04 198)"
+        ]
+      },
+      "trace-bright": {
+        "role": "primary",
+        "displayName": "Trace Active Signal",
+        "canonical": "#00e5ff",
+        "tonalRamp": [
+          "oklch(18% 0.05 200)",
+          "oklch(32% 0.08 200)",
+          "oklch(48% 0.11 200)",
+          "oklch(62% 0.14 200)",
+          "oklch(74% 0.16 200)",
+          "oklch(84% 0.14 200)",
+          "oklch(92% 0.08 200)",
+          "oklch(97% 0.03 200)"
+        ]
+      },
+      "copper": {
+        "role": "secondary",
+        "displayName": "Gold Contact Pad",
+        "canonical": "#c4a44a",
+        "tonalRamp": [
+          "oklch(14% 0.04 85)",
+          "oklch(26% 0.07 85)",
+          "oklch(40% 0.10 85)",
+          "oklch(54% 0.13 85)",
+          "oklch(68% 0.14 85)",
+          "oklch(80% 0.12 85)",
+          "oklch(90% 0.07 85)",
+          "oklch(97% 0.03 85)"
+        ]
+      },
+      "pad": {
+        "role": "secondary",
+        "displayName": "Active Pad (Gold Bright)",
+        "canonical": "#d4a843",
+        "tonalRamp": [
+          "oklch(18% 0.05 85)",
+          "oklch(32% 0.09 85)",
+          "oklch(46% 0.13 85)",
+          "oklch(60% 0.16 85)",
+          "oklch(74% 0.16 85)",
+          "oklch(84% 0.14 85)",
+          "oklch(92% 0.08 85)",
+          "oklch(98% 0.03 85)"
+        ]
+      },
+      "via": {
+        "role": "neutral",
+        "displayName": "Silver Via Ring",
+        "canonical": "#a0a8b0",
+        "tonalRamp": [
+          "oklch(14% 0.005 250)",
+          "oklch(28% 0.008 250)",
+          "oklch(42% 0.010 250)",
+          "oklch(56% 0.010 250)",
+          "oklch(68% 0.008 250)",
+          "oklch(82% 0.005 250)",
+          "oklch(92% 0.003 250)",
+          "oklch(98% 0.001 250)"
+        ]
+      },
+      "silkscreen": {
+        "role": "neutral",
+        "displayName": "White Silkscreen Text",
+        "canonical": "#d8dcd6",
+        "tonalRamp": [
+          "oklch(16% 0.004 130)",
+          "oklch(30% 0.005 130)",
+          "oklch(44% 0.005 130)",
+          "oklch(58% 0.005 130)",
+          "oklch(72% 0.005 130)",
+          "oklch(84% 0.004 130)",
+          "oklch(92% 0.002 130)",
+          "oklch(98% 0.001 130)"
+        ]
+      },
+      "silkscreen-dim": {
+        "role": "neutral",
+        "displayName": "Dim Silkscreen (Secondary Text)",
+        "canonical": "#8a9088",
+        "tonalRamp": [
+          "oklch(14% 0.004 130)",
+          "oklch(28% 0.005 130)",
+          "oklch(42% 0.005 130)",
+          "oklch(56% 0.005 130)",
+          "oklch(68% 0.004 130)",
+          "oklch(82% 0.003 130)",
+          "oklch(92% 0.002 130)",
+          "oklch(98% 0.001 130)"
+        ]
+      },
+      "led-green": {
+        "role": "accent",
+        "displayName": "LED Status Green",
+        "canonical": "#00ff41",
+        "tonalRamp": [
+          "oklch(18% 0.08 148)",
+          "oklch(32% 0.14 148)",
+          "oklch(48% 0.20 148)",
+          "oklch(62% 0.26 148)",
+          "oklch(76% 0.30 148)",
+          "oklch(86% 0.24 148)",
+          "oklch(93% 0.12 148)",
+          "oklch(97% 0.05 148)"
+        ]
+      },
+      "led-amber": {
+        "role": "accent",
+        "displayName": "LED Warning Amber",
+        "canonical": "#ffaa00",
+        "tonalRamp": [
+          "oklch(16% 0.06 72)",
+          "oklch(30% 0.12 72)",
+          "oklch(46% 0.17 72)",
+          "oklch(60% 0.20 72)",
+          "oklch(74% 0.20 72)",
+          "oklch(84% 0.16 72)",
+          "oklch(92% 0.10 72)",
+          "oklch(97% 0.04 72)"
+        ]
+      },
+      "led-red": {
+        "role": "accent",
+        "displayName": "LED Error Red",
+        "canonical": "#ff3344",
+        "tonalRamp": [
+          "oklch(16% 0.10 22)",
+          "oklch(28% 0.16 22)",
+          "oklch(42% 0.22 22)",
+          "oklch(56% 0.28 22)",
+          "oklch(70% 0.24 22)",
+          "oklch(82% 0.16 22)",
+          "oklch(92% 0.08 22)",
+          "oklch(97% 0.03 22)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero name. Extreme size, tight tracking, extra-bold. The largest type on the page — used only for the developer's full name in the U1 processor section."
+      },
+      "display-mono": {
+        "displayName": "Display Mono",
+        "purpose": "Reserved monospace display size. Large code-style headings. Currently reserved for future use."
+      },
+      "designator": {
+        "displayName": "Component Designator",
+        "purpose": "PCB component labels (U1, M1, IC3, etc.) — mono, uppercase, tight tracking. Always appears alongside or above section headings to identify the circuit component."
+      },
+      "silkscreen": {
+        "displayName": "Silkscreen Label",
+        "purpose": "Technical micro-labels used for spec references (PROGRAMMING_LANG, BACKEND_STACK), pin counts, period labels, and secondary metadata printed as if on the board silkscreen."
+      },
+      "body": {
+        "displayName": "Body Text",
+        "purpose": "Running paragraph text in Exo 2. Ranges from 0.875rem to 1.125rem. Light weight (300) for intro paragraphs, regular (400) for standard body. Max line length ~65ch via container constraints."
+      },
+      "headline": {
+        "displayName": "Section Headline (h2)",
+        "purpose": "Section titles at 1.875rem (mobile) to 2.25rem (desktop). Bold (700), tight tracking. Uses Exo 2. Always preceded by a component designator label."
+      }
+    },
+    "shadows": [
+      {
+        "name": "component-default",
+        "value": "0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,200,200,0.08)",
+        "purpose": "Chip body containers at rest. Deep offset shadow lifts the chip off the board, while the 1px trace-colored ring defines the component edge."
+      },
+      {
+        "name": "component-hover",
+        "value": "0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,200,200,0.2), 0 0 24px rgba(0,229,255,0.08)",
+        "purpose": "Chip body interactive hover. Deeper offset adds elevation, brighter ring suggests signal activity, and the trace glow implies the component is powered."
+      },
+      {
+        "name": "trace-glow",
+        "value": "0 0 12px rgba(0,229,255,0.15)",
+        "purpose": "Ambient glow behind active trace elements (primary CTA buttons, active pads). Cyan emission that suggests current flowing through the trace."
+      },
+      {
+        "name": "pad-default",
+        "value": "0 2px 0 rgba(180,140,60,0.4)",
+        "purpose": "Gold contact pad at rest. A subtle 2px bottom offset creates the impression of a raised gold pad on the board surface."
+      },
+      {
+        "name": "pad-hover",
+        "value": "0 0 16px rgba(212,168,67,0.3), 0 2px 0 rgba(180,140,60,0.6)",
+        "purpose": "Gold contact pad interactive hover. Outer glow radiates from the pad, and the bottom offset intensifies. Used on social icon buttons and secondary CTAs."
+      },
+      {
+        "name": "trace-ring",
+        "value": "0 0 0 1px rgba(0,200,200,0.3)",
+        "purpose": "Subtle 1px trace-colored ring for non-interactive trace-path demarcation."
+      },
+      {
+        "name": "text-trace-glow",
+        "value": "0 0 16px rgba(0,229,255,0.3)",
+        "purpose": "Text-level glow for highlighted trace text. Applied via text-shadow to the name highlight span in Hero."
+      },
+      {
+        "name": "text-copper-glow",
+        "value": "0 0 12px rgba(196,164,74,0.25)",
+        "purpose": "Text-level glow for highlighted copper/gold text. Available as a utility class for accent text emphasis."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default easing for state transitions (hover, focus, color changes). Tailwind default ease-out. Used on all interactive elements."
+      },
+      {
+        "name": "signal-pulse",
+        "value": "signal-pulse 2s ease-in-out infinite",
+        "purpose": "Scroll indicator (ChevronDown) and via dots pulse. Opacity oscillates 0.4 to 1. Invites the visitor to scroll down and indicates active signal path nodes."
+      },
+      {
+        "name": "led-blink",
+        "value": "led-blink 1.5s ease-in-out infinite",
+        "purpose": "Status LED indicators throughout the board. Opacity oscillates 1 to 0.3. Marks SYSTEM ACTIVE, ONLINE, and other live statuses."
+      },
+      {
+        "name": "trace-dash",
+        "value": "trace-dash 3s linear infinite",
+        "purpose": "Reserved for SVG trace animations. Stroke dash offset animation that creates the illusion of current flowing along a copper trace."
+      },
+      {
+        "name": "power-on",
+        "value": "power-on 0.6s ease-out forwards",
+        "purpose": "Reserved section entrance animation. Fade in from 0 opacity with brightness ramp 0.3 to 1. Simulates a board powering up."
+      },
+      {
+        "name": "scan-line",
+        "value": "scan-line 8s linear infinite",
+        "purpose": "Reserved decorative overlay. Vertical translate from -100% to 100vh, creating a CRT-style scan line effect."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Trace Signal)",
+      "kind": "button",
+      "refersTo": "button-trace-primary",
+      "description": "Primary CTA — cyan trace border, mono label in snake_case (ver_proyectos, ver_certificados). Represents an active signal route on the board. Hover intensifies the trace glow.",
+      "html": "<a href=\"#\" class=\"ds-btn-trace\"><span class=\"ds-btn-trace__prompt\">&gt;</span> ver_proyectos</a>",
+      "css": ".ds-btn-trace { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: rgba(0,200,200,0.1); border: 1px solid rgba(0,200,200,0.3); color: #00e5ff; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; letter-spacing: 0.05em; border-radius: 0.125rem; text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; cursor: pointer; } .ds-btn-trace:hover { background: rgba(0,200,200,0.15); border-color: rgba(0,200,200,0.5); box-shadow: 0 0 12px rgba(0,229,255,0.15); } .ds-btn-trace:focus-visible { outline: 2px solid #00e5ff; outline-offset: 2px; } .ds-btn-trace__prompt { color: #008888; }"
+    },
+    {
+      "name": "Secondary Button (Copper Pad)",
+      "kind": "button",
+      "refersTo": "button-copper-secondary",
+      "description": "Secondary CTA — gold copper border, lowercase label (contactar). Represents a gold contact pad on the PCB. Hover triggers pad glow effect.",
+      "html": "<a href=\"#\" class=\"ds-btn-copper\"><span class=\"ds-btn-copper__prompt\">&gt;&gt;</span> contactar</a>",
+      "css": ".ds-btn-copper { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; border: 1px solid rgba(196,164,74,0.3); color: #c4a44a; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; letter-spacing: 0.05em; border-radius: 0.125rem; text-decoration: none; transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; cursor: pointer; } .ds-btn-copper:hover { background: rgba(196,164,74,0.05); border-color: rgba(196,164,74,0.5); box-shadow: 0 0 16px rgba(212,168,67,0.3), 0 2px 0 rgba(180,140,60,0.6); } .ds-btn-copper:focus-visible { outline: 2px solid #c4a44a; outline-offset: 2px; } .ds-btn-copper__prompt { color: #8a7234; }"
+    },
+    {
+      "name": "Submit Button (Transmit)",
+      "kind": "button",
+      "refersTo": "button-submit-transmit",
+      "description": "Form submission button — full width, trace border, Send icon, UPPERCASE label (TRANSMITIR, ENVIAR). Represents a signal transmission action.",
+      "html": "<button type=\"submit\" class=\"ds-btn-transmit\"><svg class=\"ds-btn-transmit__icon\" width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 2L11 13\"/><path d=\"M22 2L15 22L11 13L2 9L22 2Z\"/></svg> TRANSMITIR</button>",
+      "css": ".ds-btn-transmit { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; padding: 0.75rem 1rem; background: rgba(0,200,200,0.1); border: 1px solid rgba(0,200,200,0.3); color: #00e5ff; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.75rem; letter-spacing: 0.05em; border-radius: 0.125rem; cursor: pointer; transition: background 0.2s ease, border-color 0.2s ease; } .ds-btn-transmit:hover { background: rgba(0,200,200,0.15); border-color: rgba(0,200,200,0.5); } .ds-btn-transmit:focus-visible { outline: 2px solid #00e5ff; outline-offset: 2px; } .ds-btn-transmit:disabled { opacity: 0.3; cursor: not-allowed; } .ds-btn-transmit__icon { width: 14px; height: 14px; flex-shrink: 0; }"
+    },
+    {
+      "name": "Chip Body (Card Container)",
+      "kind": "card",
+      "refersTo": "chip-body-card",
+      "description": "The universal container for PCB components — skills modules, project cards, about spec chips, education panels. Raised off the substrate with component shadow and silver via-ring border.",
+      "html": "<div class=\"ds-chip-body\"><span class=\"ds-chip-body__designator\">IC1</span><h3 class=\"ds-chip-body__title\">Component Name</h3><p class=\"ds-chip-body__text\">Component description text on the silkscreen layer.</p></div>",
+      "css": ".ds-chip-body { background: #0e120e; border: 1px solid rgba(106,114,128,0.3); border-radius: 0.25rem; padding: 1.25rem; box-shadow: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,200,200,0.08); transition: border-color 0.3s ease, box-shadow 0.3s ease; } .ds-chip-body:hover { border-color: rgba(0,200,200,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,200,200,0.2), 0 0 24px rgba(0,229,255,0.08); } .ds-chip-body__designator { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.625rem; letter-spacing: 0.15em; color: #c4a44a; } .ds-chip-body__title { font-family: 'Exo 2', system-ui, sans-serif; font-size: 1.125rem; font-weight: 700; color: #d8dcd6; margin-top: 0.25rem; } .ds-chip-body__text { font-family: 'Exo 2', system-ui, sans-serif; font-size: 0.875rem; line-height: 1.625; color: #8a9088; margin-top: 0.5rem; }"
+    },
+    {
+      "name": "Input Field (Contact Form)",
+      "kind": "input",
+      "refersTo": "input-form-field",
+      "description": "Text input for contact form — dark substrate background, silver via-ring border, mono font. Labels are UPPERCASE micro-text with 0.2em tracking. Focus shifts border to trace cyan.",
+      "html": "<div class=\"ds-input-group\"><label class=\"ds-input-group__label\">IDENTIFICADOR</label><input type=\"text\" class=\"ds-input\" placeholder=\"Tu nombre\" /></div>",
+      "css": ".ds-input-group { margin-bottom: 1rem; } .ds-input-group__label { display: block; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.625rem; letter-spacing: 0.2em; color: #8a9088; margin-bottom: 0.375rem; text-transform: uppercase; } .ds-input { width: 100%; padding: 0.625rem 0.75rem; background: #080c08; border: 1px solid rgba(106,114,128,0.3); border-radius: 0.125rem; color: #d8dcd6; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; transition: border-color 0.15s ease; } .ds-input::placeholder { color: rgba(138,144,136,0.5); } .ds-input:focus { border-color: rgba(0,200,200,0.5); outline: none; } .ds-input:focus-visible { outline: 2px solid #00e5ff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Textarea Field",
+      "kind": "input",
+      "refersTo": "input-textarea",
+      "description": "Multiline text input variant — same styling as the text input but with resize disabled and a taller default height. Labeled PAYLOAD in the contact form.",
+      "html": "<div class=\"ds-input-group\"><label class=\"ds-input-group__label\">PAYLOAD</label><textarea class=\"ds-textarea\" rows=\"4\" placeholder=\"Tu mensaje...\"></textarea></div>",
+      "css": ".ds-input-group { margin-bottom: 1rem; } .ds-input-group__label { display: block; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.625rem; letter-spacing: 0.2em; color: #8a9088; margin-bottom: 0.375rem; text-transform: uppercase; } .ds-textarea { width: 100%; padding: 0.625rem 0.75rem; background: #080c08; border: 1px solid rgba(106,114,128,0.3); border-radius: 0.125rem; color: #d8dcd6; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; resize: none; transition: border-color 0.15s ease; } .ds-textarea::placeholder { color: rgba(138,144,136,0.5); } .ds-textarea:focus { border-color: rgba(0,200,200,0.5); outline: none; } .ds-textarea:focus-visible { outline: 2px solid #00e5ff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Navigation Link (Header Item)",
+      "kind": "nav",
+      "refersTo": "nav-header-link",
+      "description": "Desktop navigation link — mono micro-text, dim silkscreen color, trace underline on hover that scales from left. Represents a silkscreen-printed routing label on the board edge.",
+      "html": "<a href=\"#\" class=\"ds-nav-link\">Proyectos</a>",
+      "css": ".ds-nav-link { position: relative; padding: 0.375rem 0.75rem; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: #8a9088; text-decoration: none; transition: color 0.2s ease; } .ds-nav-link::after { content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem; height: 1px; background: rgba(0,200,200,0.3); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; } .ds-nav-link:hover { color: #00e5ff; } .ds-nav-link:hover::after { transform: scaleX(1); } .ds-nav-link:focus-visible { outline: 2px solid #00e5ff; outline-offset: 2px; }"
+    },
+    {
+      "name": "LED Indicator (Status Dot)",
+      "kind": "custom",
+      "refersTo": "indicator-led-status",
+      "description": "Small colored circle (8px) with blink animation. Three color variants: green (active/online), amber (warning/in-progress), red (error/reset). Paired with a mono UPPERCASE label.",
+      "html": "<div class=\"ds-led-status\"><div class=\"ds-led-status__dot ds-led-status__dot--green\"></div><span class=\"ds-led-status__label\">STATUS: ACTIVE</span></div>",
+      "css": ".ds-led-status { display: inline-flex; align-items: center; gap: 0.375rem; } .ds-led-status__dot { width: 8px; height: 8px; border-radius: 9999px; flex-shrink: 0; } .ds-led-status__dot--green { background: #00ff41; animation: ds-led-blink 1.5s ease-in-out infinite; } .ds-led-status__dot--amber { background: #ffaa00; } .ds-led-status__dot--red { background: #ff3344; } .ds-led-status__label { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.5rem; letter-spacing: 0.2em; color: #8a9088; text-transform: uppercase; } @keyframes ds-led-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }"
+    },
+    {
+      "name": "Social Icon Button (Pad Contact)",
+      "kind": "button",
+      "refersTo": "button-social-pad",
+      "description": "Small square icon button for social links (GitHub, LinkedIn). Silver via-ring border at rest, shifts to gold pad on hover with pad-hover shadow. 40x40px, square with slight rounding.",
+      "html": "<a href=\"#\" class=\"ds-btn-social\"><svg class=\"ds-btn-social__icon\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4\"/><path d=\"M9 18c-4.51 2-5-2-7-2\"/></svg></a>",
+      "css": ".ds-btn-social { display: inline-flex; align-items: center; justify-content: center; width: 2.5rem; height: 2.5rem; background: #0e120e; border: 1px solid rgba(106,114,128,0.3); border-radius: 0.125rem; color: #8a9088; text-decoration: none; transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; } .ds-btn-social:hover { border-color: #d4a843; color: #d4a843; box-shadow: 0 0 16px rgba(212,168,67,0.3), 0 2px 0 rgba(180,140,60,0.6); } .ds-btn-social:focus-visible { outline: 2px solid #c4a44a; outline-offset: 2px; } .ds-btn-social__icon { width: 16px; height: 16px; }"
+    },
+    {
+      "name": "Component Label (Designator Badge)",
+      "kind": "custom",
+      "refersTo": "label-component-designator",
+      "description": "Section-level PCB designator label — mono, uppercase, tight tracking. Rendered in trace cyan or copper gold above section headings. Identifies the PCB component type (U1, IC1, J1, etc.).",
+      "html": "<span class=\"ds-comp-label\">INTEGRATED CIRCUITS · PROJECTS</span>",
+      "css": ".ds-comp-label { display: block; font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; color: #8a9088; text-transform: uppercase; } .ds-comp-label--trace { color: #00c8c8; } .ds-comp-label--copper { color: #c4a44a; }"
+    },
+    {
+      "name": "Header Bar (Fixed Navigation)",
+      "kind": "nav",
+      "refersTo": "nav-header-bar",
+      "description": "Fixed top navigation bar — substrate background with backdrop blur, subtle trace bottom border with a bright trace edge highlight line. Contains U1 processor pad with green LED, mono nav links, and dark mode toggle.",
+      "html": "<header class=\"ds-header\"><div class=\"ds-header__inner\"><a href=\"#\" class=\"ds-header__brand\"><div class=\"ds-header__u1\"><span class=\"ds-header__u1-text\">U1</span><div class=\"ds-header__u1-led\"></div></div><span class=\"ds-header__brand-label\">HEBER.DAZA</span></a><nav class=\"ds-header__nav\"><a href=\"#\" class=\"ds-nav-link\">Proyectos</a><a href=\"#\" class=\"ds-nav-link\">Contacto</a></nav></div></header>",
+      "css": ".ds-header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(8,12,8,0.9); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border-bottom: 1px solid rgba(0,200,200,0.10); } .ds-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(0,200,200,0.3) 50%, transparent 100%); } .ds-header__inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1.5rem; max-width: 1280px; margin: 0 auto; } .ds-header__brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; } .ds-header__u1 { position: relative; display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; background: #080c08; border: 1px solid rgba(196,164,74,0.5); border-radius: 0.125rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; } .ds-header__brand:hover .ds-header__u1 { border-color: #c4a44a; box-shadow: 0 0 16px rgba(212,168,67,0.3), 0 2px 0 rgba(180,140,60,0.6); } .ds-header__u1-text { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.875rem; font-weight: 700; color: #c4a44a; letter-spacing: -0.05em; } .ds-header__u1-led { position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; border-radius: 9999px; background: #00ff41; animation: ds-led-blink 1.5s ease-in-out infinite; } .ds-header__brand-label { font-family: 'JetBrains Mono', 'Fira Code', monospace; font-size: 0.75rem; letter-spacing: 0.15em; color: #8a9088; } .ds-header__nav { display: flex; align-items: center; gap: 0.25rem; } @keyframes ds-led-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } } @media (max-width: 1024px) { .ds-header__nav { display: none; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Portfolio as PCB Circuit Board",
+    "overview": "The portfolio page is a printed circuit board viewed from above — an FR-4 dark substrate with copper traces, gold contact pads, silver vias, and white silkscreen labeling. The visitor is a technician examining the board: U1 is the central processor (the developer), traces route to peripheral modules (skills, projects), and contact pads provide connection points. The aesthetic is technical, angular, and unapologetically electronic — no soft UI, no pill shapes, no gradients. Colors are solid; geometry belongs to the board.\n\nEvery section carries a PCB component designator (U1, M1–M8, IC1–IC4, J1, J3). Interactive elements use trace cyan (signals flowing) or copper gold (contact pads). Status is communicated through LED indicators (green active, amber warning, red error). The language of the board extends to labels: click targets use snake_case or UPPERCASE mono text that reads like silkscreen annotations rather than traditional UI buttons.\n\nMotion is minimal and purposeful — LED blinks suggest the board is live, signal pulses invite scrolling along the trace path, and section alternation between substrate and ground plane creates a visual rhythm that maps to the board's layered construction.",
+    "keyCharacteristics": [
+      "FR-4 dark substrate (#080c08) with green undertone as base, alternating with deeper ground plane (#060a06) for section rhythm",
+      "Copper trace cyan (#00c8c8 → #00e5ff) for active signals, interactive elements, primary CTAs",
+      "Gold contact pads (#c4a44a → #d4a843) for contact points, links, secondary actions, social icons",
+      "Silver via rings (#a0a8b0 → #c8d0d8) for structural borders, passive elements, non-interactive chrome",
+      "White silkscreen text (#d8dcd6) for body copy with dim variant (#8a9088) for secondary text and labels",
+      "PCB component designators on every section: U1, EXP1–EXP2, M1–M8, IC1–IC4, EDU1, CERT1–CERT6, J1, J3, P1–P5, MSG, BUS01–BUS06, GND, VCC, TX, RX, RST",
+      "Dual-type system: Exo 2 for display/body, JetBrains Mono for labels/designators/code/pins — mono never used for running body text",
+      "Angular geometry: 0.125rem pad radius, 0.25rem component radius, 0.5rem chip radius maximum — no pill shapes, no large-radius cards",
+      "Shadow-based elevation: components lifted off substrate with deep shadows and 1px trace-colored ring edges",
+      "LED status indicators (green/amber/red) with blink animation marking live system state"
+    ],
+    "rules": [
+      {
+        "name": "The Dark-Only Rule",
+        "body": "The PCB world is inherently dark. A light mode toggle exists but the palette is not designed for it. Lock dark mode or fully design the light variant — the substrate, traces, and pads have no light-mode equivalents.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Gradient Rule",
+        "body": "Colors are solid — the PCB aesthetic rejects gradients. The sole exception is a subtle radial gradient in the hero background, which represents ambient light on the board surface, not decoration. No other gradients anywhere.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-Silkscreen Rule",
+        "body": "JetBrains Mono is reserved exclusively for labels, designators, terminal output, pin counts, code, and technical annotations — never for running body text. Body text always uses Exo 2. If it reads like a paragraph, it's not mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The Angular Geometry Rule",
+        "body": "No border-radius above 0.5rem. Components are angular — the geometry belongs to the board, not to soft UI. Pads at 0.125rem, components at 0.25rem, chip outlines at 0.5rem maximum. No pill shapes, no large-radius cards, no circles for content containers.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Lucide-Only Rule",
+        "body": "All icons come from Lucide with consistent 1.5px stroke weight. No mixed icon libraries, no emoji, no unicode glyphs as icons. The icon set is treated as silkscreen symbols printed on the board.",
+        "section": "components"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest. Shadows appear only as a response to state — hover triggers deeper elevation with trace-colored ring intensification and ambient glow. No static decorative shadows; their presence signals interactivity.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Section Alternation Rule",
+        "body": "Sections alternate between bg-substrate (inner routing layers) and bg-plane-ground (ground plane sections). Desktop shows a vertical trace-line at left-8 in every substrate section. This rhythm maps to the alternating copper and ground layers of a multi-layer PCB.",
+        "section": "layout"
+      },
+      {
+        "name": "The Interactive Naming Rule",
+        "body": "Click targets use naming conventions from electronics documentation: primary actions in snake_case (ver_proyectos), secondary actions in lowercase (contactar), form submits in UPPERCASE (TRANSMITIR, ENVIAR), status in UPPERCACE (STATUS: ACTIVE, PROCESSING...). These are not buttons — they are silkscreen annotations on active circuit traces.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do use trace cyan (#00c8c8, #00e5ff) for primary interactive elements — buttons, links, focus rings, active signals",
+      "Do use gold copper (#c4a44a, #d4a843) for secondary actions, contact pads, and section accents that differentiate from trace paths",
+      "Do use silver via rings (#a0a8b0, #c8d0d8) exclusively for structural borders, dividers, and non-interactive chrome",
+      "Do pair every section heading with a component-label designator (component-label class) in trace or copper",
+      "Do use rounded-pad (0.125rem) for buttons and small interactive elements — they are contact pads on the board",
+      "Do use rounded-component (0.25rem) with shadow-component for chip bodies (cards, panels) — they are ICs mounted on the board",
+      "Do use chip-body class as the universal container for skills modules, project cards, about chips, and education panels",
+      "Do alternate section backgrounds between bg-substrate and bg-plane-ground to create the layered PCB rhythm",
+      "Do use JetBrains Mono at 0.5rem–0.75rem with 0.08em–0.2em tracking for all labels, designators, pin counts, and technical annotations",
+      "Do use Exo 2 for all body text — display at 800 weight for the hero name, headings at 700, body at 300–400",
+      "Do place a green LED indicator (led-green, animate-led-blink) on U1 processor elements to signal the system is live",
+      "Do use Lucide icons exclusively at 1.5px stroke weight — they are silkscreen symbols on the board"
+    ],
+    "donts": [
+      "Don't use gradients anywhere except the sole hero radial ambient light — the board is solid material",
+      "Don't use border-radius above 0.5rem — no pill shapes, no large-radius cards, no circular content containers",
+      "Don't use JetBrains Mono for running body text — mono is for labels, designators, code, and terminal output only",
+      "Don't mix icon libraries — Lucide only, no emoji, no unicode glyphs as icons",
+      "Don't use zero-blur block shadows — all shadows carry offset plus soft blur to simulate physical board depth",
+      "Don't use light mode with the current palette — the design system has no light-mode color equivalents; either lock dark mode or fully design the light variant",
+      "Don't use trace cyan (#00c8c8) and gold copper (#c4a44a) interchangeably — each has a distinct semantic role: trace for signals/actions, copper for contacts/secondary"
+    ]
+  }
+}

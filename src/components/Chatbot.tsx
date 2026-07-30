@@ -128,150 +128,161 @@ const Chatbot = () => {
   };
 
   return (
-    <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden flex flex-col h-[600px] w-full">
-      {/* Header */}
-      <div className="p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex items-center gap-3">
-        <div className="p-2 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shadow-lg">
-          <Bot className="w-6 h-6 text-white" />
-        </div>
-        <div className="flex-1">
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-            AI Assistant <Sparkles className="w-4 h-4 text-yellow-500 animate-pulse" />
-          </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Pregúntame sobre el perfil de Heber
-          </p>
-        </div>
+    <section className="flex flex-col h-[600px] w-full">
+      <span className="component-label text-trace mb-3 block">DIAGNOSTIC INTERFACE · AI CHAT</span>
+      <h2 className="text-3xl lg:text-4xl font-bold text-silkscreen tracking-tight mb-8">
+        Asistente IA
+      </h2>
 
-      </div>
-
-      {/* Messages Area */}
-      <div 
-        ref={chatContainerRef}
-        className="flex-1 overflow-y-auto p-4 space-y-6 bg-gray-50/50 dark:bg-gray-900/50 scroll-smooth"
-      >
-        {messages.length === 0 && (
-          <div className="flex flex-col items-center justify-center h-full text-center text-gray-400 space-y-8 px-4">
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center animate-bounce duration-[2000ms]">
-                <MessageSquare className="w-8 h-8 text-blue-500" />
-              </div>
-              <div>
-                <p className="text-lg font-medium text-gray-600 dark:text-gray-300">¡Hola! Soy el asistente virtual.</p>
-                <p className="text-sm">Selecciona una pregunta o escribe la tuya.</p>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
-              {suggestedQuestions.map((question, index) => (
-                <button
-                  key={index}
-                  onClick={() => sendMessage(question)}
-                  className="p-3 text-sm text-left bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-blue-500 dark:hover:border-blue-500 hover:shadow-md transition-all group"
-                >
-                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 font-medium">
-                    {question}
-                  </span>
-                </button>
-              ))}
-            </div>
+      <div className="chip-body flex flex-col flex-1 overflow-hidden">
+        <div className="p-4 border-b border-trace/10 bg-plane-ground flex items-center gap-3">
+          <div className="w-9 h-9 rounded-pad bg-trace/10 border border-trace/30 flex items-center justify-center">
+            <Bot className="w-5 h-5 text-trace-bright" />
           </div>
-        )}
-        
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`flex items-start gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300 ${
-              message.role === 'user' ? 'flex-row-reverse' : ''
-            }`}
-          >
-            <div
-              className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-md ${
-                message.role === 'user'
-                  ? 'bg-gradient-to-br from-blue-500 to-blue-600'
-                  : 'bg-gradient-to-br from-purple-500 to-purple-600'
-              }`}
-            >
-              {message.role === 'user' ? (
-                <User className="w-5 h-5 text-white" />
-              ) : (
-                <Bot className="w-5 h-5 text-white" />
-              )}
+          <div className="flex-1">
+            <div className="flex items-center gap-2">
+              <h3 className="text-sm font-bold text-silkscreen tracking-tight">
+                AI Assistant
+              </h3>
+              <Sparkles className="w-3 h-3 text-copper animate-pulse" />
             </div>
+            <p className="font-mono text-[0.625rem] text-silkscreen-dim tracking-wider">
+              Pregúntame sobre el perfil de Heber
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="led-indicator bg-led-green animate-led-blink" />
+            <span className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em]">ONLINE</span>
+          </div>
+        </div>
 
+        <div
+          ref={chatContainerRef}
+          className="flex-1 overflow-y-auto p-4 space-y-5 bg-substrate/50 scroll-smooth"
+        >
+          {messages.length === 0 && (
+            <div className="flex flex-col items-center justify-center h-full text-center space-y-8 px-4">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="w-14 h-14 rounded-pad border-2 border-trace/20 bg-trace/5 flex items-center justify-center">
+                  <MessageSquare className="w-6 h-6 text-trace" />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-silkscreen mb-1">
+                    ¡Hola! Soy el asistente virtual.
+                  </p>
+                  <p className="font-mono text-xs text-silkscreen-dim tracking-wider">
+                    Selecciona una pregunta o escribe la tuya.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-lg">
+                {suggestedQuestions.map((question, index) => (
+                  <button
+                    key={index}
+                    onClick={() => sendMessage(question)}
+                    className="p-3 text-xs text-left font-mono bg-substrate-raised border border-via-ring/30 rounded-pad hover:border-trace/50 hover:bg-trace/5 transition-all duration-200 text-silkscreen-dim hover:text-trace-bright tracking-wider"
+                  >
+                    {'> '}{question}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {messages.map((message, index) => (
             <div
-              className={`max-w-[85%] rounded-2xl px-5 py-3 shadow-sm ${
-                message.role === 'user'
-                  ? 'bg-blue-600 text-white rounded-tr-sm'
-                  : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 rounded-tl-sm'
-              }`}
+              key={index}
+              className={`flex items-start gap-3 ${message.role === 'user' ? 'flex-row-reverse' : ''}`}
             >
-              <div className="markdown-body text-sm md:text-base leading-relaxed">
-                {message.role === 'model' ? (
-                   <div className="prose dark:prose-invert max-w-none prose-sm prose-p:my-1 prose-headings:my-2 prose-strong:text-purple-600 dark:prose-strong:text-purple-400">
-                     <ReactMarkdown 
-                       components={{
-                         p: ({...props}) => <p className="mb-2 last:mb-0" {...props} />,
-                         ul: ({...props}) => <ul className="list-disc ml-4 mb-2 space-y-1" {...props} />,
-                         li: ({...props}) => <li className="mb-0" {...props} />,
-                         strong: ({...props}) => <strong className="font-bold text-gray-900 dark:text-white" {...props} />,
-                         a: ({...props}) => <a className="text-blue-600 dark:text-blue-400 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />
-                       }}
-                     >
-                       {message.content}
-                     </ReactMarkdown>
-                   </div>
+              <div
+                className={`flex-shrink-0 w-8 h-8 rounded-pad flex items-center justify-center border ${
+                  message.role === 'user'
+                    ? 'bg-trace/10 border-trace/30'
+                    : 'bg-copper/10 border-copper/30'
+                }`}
+              >
+                {message.role === 'user' ? (
+                  <User className="w-4 h-4 text-trace" />
                 ) : (
-                   <p>{message.content}</p>
+                  <Bot className="w-4 h-4 text-copper" />
                 )}
               </div>
-            </div>
-          </div>
-        ))}
-        
-        {isLoading && (
-          <div className="flex items-start gap-3">
-             <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-600 flex items-center justify-center animate-pulse">
-                <Bot className="w-5 h-5 text-white" />
-             </div>
-             <div className="bg-white dark:bg-gray-800 rounded-2xl px-4 py-3 border border-gray-200 dark:border-gray-700 flex items-center gap-2 shadow-sm">
-                <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
-                <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">Escribiendo...</span>
-             </div>
-          </div>
-        )}
-      </div>
 
-      {/* Input Area */}
-      <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-        <form onSubmit={handleSubmit} className="flex gap-3 max-w-4xl mx-auto">
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Escribe tu pregunta aquí..."
-            className="flex-1 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500"
-            disabled={isLoading}
-          />
-          <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2 min-w-[100px]"
-          >
-            {isLoading ? (
-              <Loader2 className="w-5 h-5 animate-spin" />
-            ) : (
-              <>
-                <span>Enviar</span>
-                <Send className="w-4 h-4" />
-              </>
-            )}
-          </button>
-        </form>
+              <div
+                className={`max-w-[80%] rounded-component px-4 py-3 ${
+                  message.role === 'user'
+                    ? 'bg-trace/10 border border-trace/20 text-silkscreen'
+                    : 'bg-substrate-raised border border-via-ring/20 text-silkscreen'
+                }`}
+              >
+                <div className="text-sm leading-relaxed">
+                  {message.role === 'model' ? (
+                    <div className="prose-invert max-w-none text-sm prose-p:my-1 prose-headings:my-2 prose-strong:text-copper prose-a:text-trace-bright prose-a:no-underline hover:prose-a:underline prose-code:font-mono prose-code:text-trace">
+                      <ReactMarkdown
+                        components={{
+                          p: ({...props}) => <p className="mb-2 last:mb-0" {...props} />,
+                          ul: ({...props}) => <ul className="list-disc ml-4 mb-2 space-y-1" {...props} />,
+                          li: ({...props}) => <li className="mb-0" {...props} />,
+                          strong: ({...props}) => <strong className="font-bold text-silkscreen" {...props} />,
+                          a: ({...props}) => <a className="text-trace-bright hover:underline" target="_blank" rel="noopener noreferrer" {...props} />
+                        }}
+                      >
+                        {message.content}
+                      </ReactMarkdown>
+                    </div>
+                  ) : (
+                    <p>{message.content}</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {isLoading && (
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 w-8 h-8 rounded-pad bg-copper/10 border border-copper/30 flex items-center justify-center">
+                <Bot className="w-4 h-4 text-copper" />
+              </div>
+              <div className="bg-substrate-raised border border-via-ring/20 rounded-component px-4 py-3 flex items-center gap-2">
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-trace" />
+                <span className="font-mono text-xs text-silkscreen-dim tracking-wider">PROCESANDO...</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="p-4 bg-substrate-raised border-t border-trace/10">
+          <form onSubmit={handleSubmit} className="flex gap-2 max-w-4xl mx-auto">
+            <div className="flex-1 relative">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Escribe tu pregunta aquí..."
+                className="w-full px-4 py-2.5 rounded-pad border border-via-ring/30 bg-substrate text-sm text-silkscreen placeholder:text-silkscreen-dim/50 focus:border-trace/50 focus:outline-none transition-colors font-mono tracking-wider"
+                disabled={isLoading}
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={isLoading || !input.trim()}
+              className="px-4 py-2.5 bg-trace/10 border border-trace/30 text-trace-bright font-mono text-xs tracking-wider rounded-pad hover:bg-trace/15 hover:border-trace/50 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2"
+            >
+              {isLoading ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <>
+                  <span>ENVIAR</span>
+                  <Send className="w-3 h-3" />
+                </>
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   );
 };
-
 
 export default Chatbot;

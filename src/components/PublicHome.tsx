@@ -18,77 +18,104 @@ interface PublicHomeProps {
 
 const PublicHome = ({ darkMode, toggleDarkMode }: PublicHomeProps) => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 transition-colors duration-200">
+    <div className="min-h-screen bg-substrate text-silkscreen transition-colors duration-300">
       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main>
         <Hero />
-        <About />
 
-        <div className="bg-gray-50 dark:bg-gray-900 py-16">
-          <div className="container mx-auto px-6">
-            <Experience />
+        <div className="relative">
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-trace/40 via-trace/10 to-transparent hidden lg:block" />
+          <About />
+        </div>
+
+        <div className="relative bg-plane-ground border-y border-trace/10">
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-trace/20 hidden lg:block" />
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-6xl">
+              <Experience />
+            </div>
           </div>
         </div>
 
-        <div className="py-16">
-          <div className="container mx-auto px-6">
-            <Skills />
+        <div className="relative">
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-trace/20 via-trace/10 to-transparent hidden lg:block" />
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-6xl">
+              <Skills />
+            </div>
           </div>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-900 py-16">
-          <div className="container mx-auto px-6">
-            <Projects />
+        <div className="relative bg-plane-ground border-y border-trace/10">
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-trace/20 hidden lg:block" />
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-6xl">
+              <Projects />
+            </div>
           </div>
         </div>
 
-        <div className="py-16">
-          <div className="container mx-auto px-6">
-            <Education />
+        <div className="relative">
+          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-trace/20 via-trace/10 to-transparent hidden lg:block" />
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-6xl">
+              <Education />
+            </div>
           </div>
         </div>
 
-        <div id="chat" className="bg-gray-50 dark:bg-gray-900 py-16">
-          <div className="container mx-auto px-6 max-w-3xl">
-            <Chatbot />
+        <div id="chat" className="relative bg-plane-ground border-y border-trace/10">
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-4xl">
+              <Chatbot />
+            </div>
           </div>
         </div>
 
-        <div id="languages" className="py-16">
-          <div className="container mx-auto px-6 max-w-4xl">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="p-3 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl">
-                  <Languages className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+        <div id="languages" className="relative">
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-2xl">
+              <div className="chip-body p-8 lg:p-10">
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="component-label text-copper">J3</span>
+                  <div className="w-8 h-8 rounded-pad bg-copper/10 border border-copper/30 flex items-center justify-center">
+                    <Languages className="w-4 h-4 text-copper" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-silkscreen tracking-tight">Idiomas</h2>
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Idiomas</h2>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Español</h3>
-                  <span className="inline-block px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-sm font-medium">
-                    Nativo
-                  </span>
-                </div>
-                <div className="bg-gray-50 dark:bg-gray-900 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                  <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Inglés</h3>
-                  <span className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-full text-sm font-medium">
-                    B1
-                  </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="bg-plane-ground border border-via-ring/20 rounded-component p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-silkscreen">Español</h3>
+                      <div className="led-indicator bg-led-green animate-led-blink" />
+                    </div>
+                    <span className="text-xs font-mono text-silkscreen-dim tracking-wider">NATIVO</span>
+                  </div>
+                  <div className="bg-plane-ground border border-via-ring/20 rounded-component p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-silkscreen">Inglés</h3>
+                      <div className="led-indicator bg-led-amber" />
+                    </div>
+                    <span className="text-xs font-mono text-silkscreen-dim tracking-wider">B1 — INTERMEDIO</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-900 py-16">
-          <div className="container mx-auto px-6">
-            <TechNews />
+        <div className="relative bg-plane-ground border-y border-trace/10">
+          <div className="py-24 lg:py-32">
+            <div className="container mx-auto px-6 max-w-6xl">
+              <TechNews />
+            </div>
           </div>
         </div>
 
-        <div className="py-16">
-          <Contact />
+        <div className="relative">
+          <div className="py-24 lg:py-32">
+            <Contact />
+          </div>
         </div>
       </main>
       <Footer />

@@ -1,87 +1,104 @@
-import { Code2, Database, Cloud, Shield, Wrench, Brain, Server, Layers } from 'lucide-react'
-
 const Skills = () => {
-  const skillCategories = [
+  const modules = [
     {
-      icon: Code2,
-      title: 'Lenguajes de Programación',
-      skills: ['Python', 'Java', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3'],
+      id: 'M1',
+      label: 'Lenguajes',
+      spec: 'PROGRAMMING_LANG',
+      items: ['Python', 'Java', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3'],
+      pins: 6,
     },
     {
-      icon: Server,
-      title: 'Backend & APIs',
-      skills: ['Spring Boot', 'Django', 'FastAPI', 'Node.js', 'Express', 'REST', 'GraphQL'],
+      id: 'M2',
+      label: 'Backend & APIs',
+      spec: 'BACKEND_STACK',
+      items: ['Spring Boot', 'Django', 'FastAPI', 'Node.js', 'Express', 'REST', 'GraphQL'],
+      pins: 7,
     },
     {
-      icon: Layers,
-      title: 'Frontend',
-      skills: ['React', 'Vite'],
+      id: 'M3',
+      label: 'Bases de Datos',
+      spec: 'DATA_LAYER',
+      items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+      pins: 4,
     },
     {
-      icon: Database,
-      title: 'Bases de Datos & Caché',
-      skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis'],
+      id: 'M4',
+      label: 'Testing & Calidad',
+      spec: 'QA_SUITE',
+      items: ['JUnit', 'Pytest', 'Jest', 'Vitest', 'Playwright', 'SonarQube', 'ESLint'],
+      pins: 7,
     },
     {
-      icon: Shield,
-      title: 'Testing & Calidad',
-      skills: ['JUnit', 'Pytest', 'Jest', 'Vitest', 'Playwright', 'SonarQube', 'ESLint'],
+      id: 'M5',
+      label: 'DevOps & Cloud',
+      spec: 'INFRASTRUCTURE',
+      items: ['Docker', 'AWS (EC2, S3, IAM, Lambda)', 'GCP', 'GitHub Actions', 'CI/CD'],
+      pins: 5,
     },
     {
-      icon: Cloud,
-      title: 'DevOps & Cloud',
-      skills: ['Docker', 'AWS', 'GCP', 'GitHub Actions', 'CI/CD'],
+      id: 'M6',
+      label: 'IA & Arquitectura',
+      spec: 'AI_ARCH',
+      items: ['MCP', 'Claude Code', 'OpenSpec', 'Swagger/OpenAPI', 'JWT', 'Git'],
+      pins: 6,
     },
     {
-      icon: Brain,
-      title: 'Herramientas & IA',
-      skills: ['Git', 'GitHub', 'Swagger/OpenAPI', 'JWT', 'MCP', 'Claude Code', 'OpenSpec'],
+      id: 'M7',
+      label: 'Metodologías',
+      spec: 'METHODOLOGY',
+      items: ['Scrum', 'Kanban', 'TDD', 'Clean Code', 'SOLID', 'SDD'],
+      pins: 6,
     },
     {
-      icon: Wrench,
-      title: 'Metodologías & Prácticas',
-      skills: ['Scrum', 'Kanban', 'TDD', 'Clean Code', 'SOLID', 'SDD'],
+      id: 'M8',
+      label: 'Soft Skills',
+      spec: 'HUMAN_INTERFACE',
+      items: ['Autodidacta', 'Liderazgo', 'Resolución de Problemas', 'Comunicación Efectiva', 'Pensamiento Crítico'],
+      pins: 5,
     },
   ]
 
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Tecnologías y <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Herramientas</span>
-          </h2>
-          <p className="text-center text-gray-600 dark:text-gray-400 mb-16">
-            Mi stack tecnológico y áreas de especialización
-          </p>
+    <section id="skills">
+      <span className="component-label text-trace mb-3 block">PERIPHERAL MODULES · SKILLS</span>
+      <h2 className="text-3xl lg:text-4xl font-bold text-silkscreen tracking-tight mb-12">
+        Habilidades Técnicas
+      </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {skillCategories.map((category, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-950 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:scale-105 transition-all"
-              >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-3 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-lg">
-                    <category.icon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h3 className="text-xl font-bold">{category.title}</h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {modules.map((mod) => (
+          <div key={mod.id} className="chip-body p-4 group">
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-[0.625rem] text-copper tracking-[0.15em]">
+                {mod.id}
+              </span>
+              <span className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em]">
+                {mod.spec}
+              </span>
+            </div>
+            <h3 className="text-sm font-bold text-silkscreen mb-3 tracking-tight">
+              {mod.label}
+            </h3>
+            <div className="space-y-1.5">
+              {mod.items.map((item, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-1 h-1 rounded-full bg-trace/30 flex-shrink-0" />
+                  <span className="text-xs text-silkscreen-dim leading-tight">{item}</span>
                 </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+              ))}
+            </div>
+            <div className="mt-4 pt-3 border-t border-trace/10 flex items-center justify-between">
+              <div className="flex gap-0.5">
+                {Array.from({ length: mod.pins }).map((_, i) => (
+                  <div key={i} className="w-1.5 h-3 rounded-pad bg-trace/20" />
+                ))}
               </div>
-            ))}
+              <span className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em]">
+                {mod.pins} PIN
+              </span>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   )

@@ -1,84 +1,131 @@
-import { Mail, Linkedin, Github, Phone } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react'
+import { useState } from 'react'
 
 const Contact = () => {
-  const contactMethods = [
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'heberyesiddazatoloza@gmail.com',
-      link: 'mailto:heberyesiddazatoloza@gmail.com',
-      color: 'from-red-500 to-orange-500',
-    },
-    {
-      icon: Phone,
-      title: 'Teléfono',
-      value: '(+57) 313 3331900',
-      link: 'https://wa.me/+573133331900',
-      color: 'from-green-500 to-emerald-500',
-    },
-    {
-      icon: Linkedin,
-      title: 'LinkedIn',
-      value: 'Conecta conmigo',
-      link: 'https://www.linkedin.com/in/heberyesid/',
-      color: 'from-blue-600 to-blue-800',
-    },
-    {
-      icon: Github,
-      title: 'GitHub',
-      value: 'Explora mis proyectos',
-      link: 'https://github.com/HeberYesid',
-      color: 'from-gray-700 to-gray-900',
-    },
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 4000)
+  }
+
+  const contactPads = [
+    { id: 'P1', icon: Mail, label: 'EMAIL', value: 'heberyesiddazatoloza@gmail.com', href: 'mailto:heberyesiddazatoloza@gmail.com' },
+    { id: 'P2', icon: Phone, label: 'TEL', value: '(+57) 313 3331900', href: 'tel:+573133331900' },
+    { id: 'P3', icon: MapPin, label: 'LOC', value: 'Cúcuta, Colombia', href: null },
+    { id: 'P4', icon: Github, label: 'GH', value: 'github.com/HeberYesid', href: 'https://github.com/HeberYesid' },
+    { id: 'P5', icon: Linkedin, label: 'LI', value: 'linkedin.com/in/heberyesid', href: 'https://www.linkedin.com/in/heberyesid/' },
   ]
 
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-            Trabajemos <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Juntos</span>
-          </h2>
-          <p className="text-center text-gray-600 dark:text-gray-400 mb-16 max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente o quieres colaborar? No dudes en contactarme. 
-            Estoy abierto a nuevas oportunidades y desafíos.
-          </p>
+    <section id="contact" className="container mx-auto px-6 max-w-4xl">
+      <span className="component-label text-trace mb-3 block">CONNECTOR · J1 — CONTACT</span>
+      <h2 className="text-3xl lg:text-4xl font-bold text-silkscreen tracking-tight mb-12">
+        Contacto
+      </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-            {contactMethods.map((method, index) => (
-              <a
-                key={index}
-                href={method.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white dark:bg-gray-950 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-800 hover:shadow-xl hover:scale-105 transition-all group"
-              >
-                <div className="flex items-start gap-4">
-                  <div className={`p-3 bg-gradient-to-br ${method.color} rounded-lg`}>
-                    <method.icon className="w-6 h-6 text-white" />
+      <div className="grid lg:grid-cols-5 gap-8">
+        <div className="lg:col-span-2 space-y-2">
+          {contactPads.map((pad) => (
+            <div key={pad.id}>
+              {pad.href ? (
+                <a
+                  href={pad.href}
+                  target={pad.href.startsWith('http') ? '_blank' : undefined}
+                  rel={pad.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="chip-body p-3 flex items-center gap-3 group hover:border-trace/40 transition-all duration-200 block"
+                >
+                  <span className="font-mono text-[0.625rem] text-copper tracking-[0.15em] w-6">{pad.id}</span>
+                  <div className="w-8 h-8 rounded-pad bg-trace/5 border border-trace/20 flex items-center justify-center flex-shrink-0 group-hover:border-trace/40 transition-colors">
+                    <pad.icon className="w-3.5 h-3.5 text-trace" />
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {method.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">{method.value}</p>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em] mb-0.5">{pad.label}</p>
+                    <p className="text-xs text-silkscreen truncate">{pad.value}</p>
+                  </div>
+                </a>
+              ) : (
+                <div className="chip-body p-3 flex items-center gap-3">
+                  <span className="font-mono text-[0.625rem] text-copper tracking-[0.15em] w-6">{pad.id}</span>
+                  <div className="w-8 h-8 rounded-pad bg-trace/5 border border-trace/20 flex items-center justify-center flex-shrink-0">
+                    <pad.icon className="w-3.5 h-3.5 text-trace" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em] mb-0.5">{pad.label}</p>
+                    <p className="text-xs text-silkscreen">{pad.value}</p>
                   </div>
                 </div>
-              </a>
-            ))}
-          </div>
+              )}
+            </div>
+          ))}
+        </div>
 
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 md:p-12 text-white text-center">
-            <h3 className="text-3xl font-bold mb-4">¿Listo para comenzar?</h3>
-            <p className="text-lg mb-8 opacity-90">
-              Hablemos sobre cómo puedo contribuir a tu próximo proyecto
-            </p>
-            <a
-              href="mailto:heberyesiddazatoloza@gmail.com"
-              className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all"
-            >
-              Enviar Mensaje
-            </a>
+        <div className="lg:col-span-3">
+          <div className="chip-body p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <span className="font-mono text-[0.625rem] text-copper tracking-[0.15em]">MSG</span>
+              <h3 className="text-sm font-bold text-silkscreen tracking-tight">Enviar mensaje</h3>
+            </div>
+
+            {submitted ? (
+              <div className="flex items-center gap-3 py-8 justify-center">
+                <div className="led-indicator bg-led-green animate-led-blink" />
+                <p className="font-mono text-sm text-trace-bright tracking-wider">
+                  MENSAJE ENVIADO — GRACIAS
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label className="block font-mono text-[0.625rem] text-silkscreen-dim tracking-[0.2em] mb-1.5">
+                    IDENTIFICADOR
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-3 py-2.5 rounded-pad border border-via-ring/30 bg-substrate text-sm text-silkscreen placeholder:text-silkscreen-dim/50 focus:border-trace/50 focus:outline-none transition-colors font-mono"
+                    placeholder="Tu nombre"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block font-mono text-[0.625rem] text-silkscreen-dim tracking-[0.2em] mb-1.5">
+                    DIRECCIÓN
+                  </label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-3 py-2.5 rounded-pad border border-via-ring/30 bg-substrate text-sm text-silkscreen placeholder:text-silkscreen-dim/50 focus:border-trace/50 focus:outline-none transition-colors font-mono"
+                    placeholder="tu@email.com"
+                    required
+                  />
+                </div>
+                <div>
+                  <label className="block font-mono text-[0.625rem] text-silkscreen-dim tracking-[0.2em] mb-1.5">
+                    PAYLOAD
+                  </label>
+                  <textarea
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    rows={4}
+                    className="w-full px-3 py-2.5 rounded-pad border border-via-ring/30 bg-substrate text-sm text-silkscreen placeholder:text-silkscreen-dim/50 focus:border-trace/50 focus:outline-none transition-colors font-mono resize-none"
+                    placeholder="Tu mensaje..."
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full px-4 py-3 bg-trace/10 border border-trace/30 text-trace-bright font-mono text-xs tracking-wider rounded-pad hover:bg-trace/15 hover:border-trace/50 transition-all duration-200 flex items-center justify-center gap-2"
+                >
+                  <Send className="w-3.5 h-3.5" />
+                  TRANSMITIR
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
