@@ -58,7 +58,7 @@ export default {
       fontSize: {
         'display': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '0.95', letterSpacing: '-0.04em', fontWeight: '800' }],
         'display-mono': ['clamp(2.5rem, 7vw, 6rem)', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'silkscreen': ['0.6875rem', { lineHeight: '1.4', letterSpacing: '0.12em', fontWeight: '500' }],
+        'silkscreen-label': ['0.6875rem', { lineHeight: '1.4', letterSpacing: '0.12em', fontWeight: '500' }],
         'designator': ['0.75rem', { lineHeight: '1', letterSpacing: '0.08em', fontWeight: '600' }],
       },
       boxShadow: {

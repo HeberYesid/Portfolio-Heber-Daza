@@ -11,15 +11,10 @@ import Contact from './Contact'
 import Footer from './Footer'
 import { Languages } from 'lucide-react'
 
-interface PublicHomeProps {
-  darkMode: boolean
-  toggleDarkMode: () => void
-}
-
-const PublicHome = ({ darkMode, toggleDarkMode }: PublicHomeProps) => {
+const PublicHome = () => {
   return (
     <div className="min-h-screen bg-substrate text-silkscreen transition-colors duration-300">
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Header />
       <main>
         <Hero />
 

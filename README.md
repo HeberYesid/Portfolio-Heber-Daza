@@ -34,7 +34,9 @@ La aplicación actual funciona como un portafolio público de una sola superfici
 
 Requisitos: Node.js `^20.19.0` o `>=22.12.0` (Vite 7) y npm. La vista pública se puede iniciar sin una clave de Gemini. El chatbot lee `VITE_GEMINI_API_KEY` y no puede responder sin ella. Como el código la usa en el navegador, no pongas una credencial privada en esa variable ni la incluyas en un build público.
 
-La sección de noticias usa `/api/news`. Para consultar GNews en desarrollo, la configuración de Vite lee `VITE_GNEWS_API_KEY` de tu entorno local; en el endpoint de Vercel, la variable es `GNEWS_API_KEY` y se configura del lado servidor.
+La sección de noticias usa `/api/news`. Coloca `GNEWS_API_KEY` (sin prefijo `VITE_`) en tu `.env` local para `dev` y `preview`, o como variable de servidor en Vercel. Si tenías `VITE_GNEWS_API_KEY`, renómbrala en tu configuración local. Sin clave, el portafolio sigue disponible y la sección muestra que no hay noticias. El alojamiento estático necesita un backend para servir esta ruta.
+
+El contacto abre la aplicación de correo del visitante; el sitio no envía mensajes ni confirma su entrega.
 
 ```bash
 npm install

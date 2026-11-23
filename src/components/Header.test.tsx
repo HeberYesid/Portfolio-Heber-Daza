@@ -1,44 +1,38 @@
-import { render, screen, fireEvent } from '@testing-library/react'
-import { vi } from 'vitest'
+import { fireEvent, render, screen, within } from '@testing-library/react'
 import Header from './Header'
 
 describe('Header', () => {
-  it('renders navigation links', () => {
-    render(<Header darkMode={false} toggleDarkMode={() => {}} />)
-    
-    expect(screen.getByText('Inicio')).toBeInTheDocument()
-    expect(screen.getByText('Sobre Mí')).toBeInTheDocument()
-    expect(screen.getByText('Habilidades')).toBeInTheDocument()
-    expect(screen.getByText('Herramientas IA')).toBeInTheDocument()
-    expect(screen.getByText('Proyectos')).toBeInTheDocument()
-    expect(screen.getByText('Experiencia')).toBeInTheDocument()
-    expect(screen.getByText('Educación')).toBeInTheDocument()
-    expect(screen.getByText('Contacto')).toBeInTheDocument()
+  it('enlaza a los destinos públicos y no ofrece un tema claro sin implementar', () => {
+    render(<Header />)
+    const nav = within(screen.getByRole('navigation'))
+
+    expect(nav.getByRole('link', { name: 'Proyectos' })).toHaveAttribute('href', '#projects')
+    expect(nav.getByRole('link', { name: 'Chat IA' })).toHaveAttribute('href', '#chat')
+    expect(nav.getByRole('link', { name: 'Contacto' })).toHaveAttribute('href', '#contact')
+    expect(nav.queryByRole('button', { name: /cambiar a modo/i })).not.toBeInTheDocument()
   })
 
-  it('calls toggleDarkMode when theme button is clicked', () => {
-    const toggleDarkMode = vi.fn()
-    render(<Header darkMode={false} toggleDarkMode={toggleDarkMode} />)
-    
-    const themeButton = screen.getByLabelText('Toggle theme')
-    fireEvent.click(themeButton)
-    
-    expect(toggleDarkMode).toHaveBeenCalledTimes(1)
+  it('anuncia el estado del menú móvil y lo cierra al elegir una sección', () => {
+    render(<Header />)
+    const menu = screen.getByRole('button', { name: 'Menú de secciones' })
+    expect(menu).toHaveAttribute('aria-expanded', 'false')
+    expect(screen.getByRole('list')).toHaveAttribute('id', menu.getAttribute('aria-controls'))
+
+    fireEvent.click(menu)
+    expect(menu).toHaveAttribute('aria-expanded', 'true')
+    fireEvent.click(screen.getByRole('link', { name: 'Proyectos' }))
+    expect(menu).toHaveAttribute('aria-expanded', 'false')
   })
 
-  it('toggles mobile menu when menu button is clicked', () => {
-    render(<Header darkMode={false} toggleDarkMode={() => {}} />)
-    
-    // Menu should be hidden initially (on desktop it is hidden via CSS, but on mobile logic it's conditioned by state)
-    // Testing library renders everything, but checking state change via UI
-    
-    const menuButton = screen.getByLabelText('Toggle menu')
-    fireEvent.click(menuButton)
-    
-    // Now mobile menu items should be effectively rendered in the mobile container
-    // Since items are duplicated for mobile/desktop, getting by all triggers might be tricky if not careful
-    // But logic simply renders the UL when open.
-    const startLinks = screen.getAllByText('Inicio')
-    expect(startLinks.length).toBeGreaterThanOrEqual(1)
+  it('cierra el menú con Escape y devuelve el foco al botón', () => {
+    render(<Header />)
+    const menu = screen.getByRole('button', { name: 'Menú de secciones' })
+    fireEvent.click(menu)
+    const link = screen.getByRole('link', { name: 'Proyectos' })
+    link.focus()
+    fireEvent.keyDown(link, { key: 'Escape' })
+
+    expect(menu).toHaveAttribute('aria-expanded', 'false')
+    expect(menu).toHaveFocus()
   })
 })

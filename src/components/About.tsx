@@ -40,7 +40,7 @@ const About = () => {
             <div className="sticky top-24">
               <span className="component-label text-copper mb-3 block">COMPONENT · U1 — DATASHEET</span>
               <h2 className="text-3xl lg:text-4xl font-bold text-silkscreen tracking-tight mb-6">
-                Sobre el<br />desarrollador
+                {'Sobre el '}<span className="block">desarrollador</span>
               </h2>
               <div className="space-y-4 text-silkscreen-dim leading-relaxed text-sm lg:text-base">
                 <p>

@@ -14,7 +14,7 @@
   }
 
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-trace-bright;
+    @apply outline outline-2 outline-offset-2 outline-trace-bright;
   }
 }
 
@@ -37,7 +37,7 @@
   }
 
   .silkscreen-text {
-    @apply font-mono text-silkscreen text-silkscreen-dim uppercase tracking-widest;
+    @apply font-mono text-silkscreen-label text-silkscreen-dim uppercase tracking-widest;
   }
 
   .pad {
@@ -91,7 +91,9 @@
 }
 
 html {
+  color-scheme: dark;
   scroll-behavior: smooth;
+  scroll-padding-top: 4.75rem;
 }
 
 ::-webkit-scrollbar {

@@ -89,7 +89,7 @@ Every section and significant element carries a PCB component designator:
 | J1 | Contact | Main connector with labeled pads |
 | J3 | Languages | Auxiliary connector |
 | P1–P5 | Contact | Individual contact pads (EMAIL, TEL, LOC, GH, LI) |
-| MSG | Contact | Message transmission sub-circuit |
+| MSG | Contact | Direct link to the visitor's email app |
 | BUS01–BUS06 | TechNews | Data bus channels |
 | GND, VCC, TX, RX, RST | Footer | Pinout terminals |
 
@@ -120,7 +120,7 @@ Every section and significant element carries a PCB component designator:
 ├──── bg-plane-ground ────────────────────────────┤
 │ TECH NEWS — data bus (BUS01–BUS06)              │
 ├──── trace-line ─────────────────────────────────┤
-│ CONTACT — J1 connector, 5 pads, transmit form   │
+│ CONTACT — J1 connector, 5 pads, email link       │
 ├─────────────────────────────────────────────────┤
 │ FOOTER — pinout: GND | VCC | TX | RX | RST      │
 └─────────────────────────────────────────────────┘
@@ -136,8 +136,8 @@ Section alternation between `bg-substrate` (inner routing) and `bg-plane-ground`
 |---|---|---|
 | Primary action (trace) | Cyan border, trace glow on hover | `snake_case` — `ver_proyectos`, `ver_certificados` |
 | Secondary action (copper) | Gold border, pad glow on hover | `lowercase` — `contactar` |
-| Form submit | Cyan border, Send icon | `UPPERCASE` — `TRANSMITIR`, `ENVIAR` |
-| Form labels | Mono micro-text, 0.2em tracking | `UPPERCASE` — `IDENTIFICADOR`, `DIRECCIÓN`, `PAYLOAD` |
+| Chat submit | Cyan border, Send icon | `UPPERCASE` — `ENVIAR` |
+| Email action | Cyan border, Send icon | `Abrir aplicación de correo` |
 | Status | LED indicator + mono label | `UPPERCASE` — `STATUS: ACTIVE`, `ONLINE`, `PROCESANDO...` |
 | Empty/error | Mono technical message | `UPPERCASE` — `SIGNAL LOST — NO DATA AVAILABLE`, `FETCHING DATA BUS...` |
 
@@ -145,7 +145,7 @@ Section alternation between `bg-substrate` (inner routing) and `bg-plane-ground`
 
 ## Constraints
 
-- **Dark only.** The PCB world is inherently dark. Light mode toggle exists but the palette is not designed for it. Lock dark mode or fully design the light variant.
+- **Dark only.** The PCB world is inherently dark. The portfolio does not offer a light mode toggle; a light variant requires its own design decision.
 - **No gradients.** Colors are solid — the PCB aesthetic rejects gradients. Subtle radial gradient in hero background is the sole exception (ambient light, not decoration).
 - **No border-radius above 0.5rem.** Components are angular. The geometry belongs to the board, not to soft UI.
 - **Mono is silkscreen, not body.** JetBrains Mono reserved for labels, designators, terminal output, and code. Never use mono for running body text.

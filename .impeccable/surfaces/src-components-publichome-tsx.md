@@ -29,7 +29,7 @@ Primer viewport: procesador U1 central rodeado de periféricos conectados por tr
 - Chatbot empty: preguntas sugeridas como pads cliqueables
 - Loading: pulso de luz recorriendo trazas
 - Error: componente FAULT con LED rojo
-- Dark mode nativo; light mode como "vista de ingeniería inversa"
+- Modo oscuro nativo; no hay selector de tema.
 - Mobile: trazas colapsan a single-column routing
 
 ## Constraints

@@ -2,23 +2,18 @@ import { render, screen } from '@testing-library/react'
 import About from './About'
 
 describe('About', () => {
-  it('renders section title', () => {
+  it('muestra el título de la sección', () => {
     render(<About />)
-    expect(screen.getByText(/Sobre/i)).toBeInTheDocument()
-    expect(screen.getByText(/Mí/i)).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Sobre el desarrollador', level: 2 })).toBeInTheDocument()
   })
 
-  it('renders skill cards', () => {
+  it('muestra las cuatro áreas del perfil técnico', () => {
     render(<About />)
     const skills = [
-      'Autodidacta',
-      'Trabajo en Equipo',
-      'Liderazgo',
-      'Resolución de Problemas',
-      'Adaptabilidad',
-      'Comunicación Efectiva',
-      'Pensamiento Crítico',
-      'Mentalidad de Crecimiento',
+      'Backend Systems',
+      'Clean Architecture',
+      'Quality Assurance',
+      'SDD Workflow',
     ]
 
     skills.forEach(skill => {

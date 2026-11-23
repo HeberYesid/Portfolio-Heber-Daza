@@ -1,36 +1,18 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicHome from "./components/PublicHome";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(() => {
-    const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? savedTheme === "dark" : true;
-  });
-
   useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+    // Al cargar un enlace directo, la sección no existe hasta que React monta la página.
+    const id = window.location.hash.slice(1);
+    if (id) document.getElementById(id)?.scrollIntoView({ behavior: "instant" });
+  }, []);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/*"
-          element={
-            <PublicHome darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-          }
-        />
+        <Route path="/*" element={<PublicHome />} />
       </Routes>
     </BrowserRouter>
   );

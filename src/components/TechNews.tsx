@@ -31,7 +31,9 @@ const readCache = (): CacheEntry | null => {
 const writeCache = (articles: Article[]) => {
   try {
     localStorage.setItem(CACHE_KEY, JSON.stringify({ articles, timestamp: Date.now() }));
-  } catch {}
+  } catch {
+    // La caché es opcional si el navegador no permite escribir en localStorage.
+  }
 };
 
 const TechNews = () => {
@@ -123,7 +125,7 @@ const TechNews = () => {
                 <span className="font-mono text-[0.625rem] text-silkscreen-dim tracking-wider">
                   {article.source.name}
                 </span>
-                <span className="font-mono text-[0.625rem] text-silkscreen-dim/50 tracking-wider">
+              <span className="font-mono text-[0.625rem] text-silkscreen-dim tracking-wider">
                   {formatDate(article.publishedAt)}
                 </span>
               </div>

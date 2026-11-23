@@ -34,7 +34,8 @@ Portafolio profesional de Heber Yesid Daza Toloza. Expone su perfil como Ingenie
 
 **Capabilities confirmadas:**
 - Single-page portfolio con secciones: Hero, Sobre mí, Experiencia, Habilidades, Proyectos, Educación, Chatbot IA, Idiomas, Tech News, Contacto.
-- Dark/light mode con persistencia en localStorage.
+- Modo oscuro PCB; no se ofrece una variante clara.
+- Contacto mediante el cliente de correo del visitante y enlaces directos a otros canales.
 - Chatbot impulsado por Google Gemini (gemini-flash-latest) que responde usando datos estructurados del perfil (PORTFOLIO_CONTEXT).
 - Diseño responsivo (mobile, tablet, desktop).
 - Tests automatizados con Vitest y React Testing Library.
@@ -69,4 +70,4 @@ Portafolio profesional de Heber Yesid Daza Toloza. Expone su perfil como Ingenie
 
 - Sitio en español como idioma principal, con markup semántico.
 - Soporte para lectores de pantalla mediante roles ARIA y atributos `aria-label` en interacciones clave.
-- Contraste adecuado en ambos temas (dark/light).
+- Contraste en el tema oscuro PCB.

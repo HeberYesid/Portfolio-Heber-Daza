@@ -2,27 +2,26 @@ import { render, screen } from '@testing-library/react'
 import Contact from './Contact'
 
 describe('Contact', () => {
-  it('renders contact section title', () => {
+  it('muestra los canales de contacto con destinos utilizables', () => {
     render(<Contact />)
-    expect(screen.getByText(/Trabajemos/i)).toBeInTheDocument()
-    expect(screen.getByText(/Juntos/i)).toBeInTheDocument()
+
+    expect(screen.getByRole('heading', { name: 'Contacto', level: 2 })).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /heberyesiddazatoloza@gmail\.com/i }))
+      .toHaveAttribute('href', 'mailto:heberyesiddazatoloza@gmail.com')
+    expect(screen.getByRole('link', { name: /313 3331900/ })).toHaveAttribute('href', 'tel:+573133331900')
+    expect(screen.getByRole('link', { name: /github\.com\/HeberYesid/i }))
+      .toHaveAttribute('href', 'https://github.com/HeberYesid')
+    expect(screen.getByRole('link', { name: /linkedin\.com\/in\/heberyesid/i }))
+      .toHaveAttribute('href', 'https://www.linkedin.com/in/heberyesid/')
   })
 
-  it('renders contact methods', () => {
-    render(<Contact />)
-    
-    expect(screen.getByText('Email')).toBeInTheDocument()
-    expect(screen.getByText('heberyesiddazatoloza@gmail.com')).toBeInTheDocument()
-    
-    expect(screen.getByText('Teléfono')).toBeInTheDocument()
-    expect(screen.getByText('LinkedIn')).toBeInTheDocument()
-    expect(screen.getByText('GitHub')).toBeInTheDocument()
-  })
+  it('ofrece abrir el correo sin prometer un envío desde el sitio', () => {
+    const { container } = render(<Contact />)
 
-  it('renders "Enviar Mensaje" button', () => {
-    render(<Contact />)
-    const button = screen.getByText('Enviar Mensaje')
-    expect(button).toBeInTheDocument()
-    expect(button.closest('a')).toHaveAttribute('href', 'mailto:heberyesiddazatoloza@gmail.com')
+    expect(screen.getByRole('link', { name: 'Abrir aplicación de correo' }))
+      .toHaveAttribute('href', 'mailto:heberyesiddazatoloza@gmail.com?subject=Contacto%20desde%20el%20portafolio')
+    expect(screen.getByText(/redactes y envíes/i)).toBeInTheDocument()
+    expect(container.querySelector('form')).not.toBeInTheDocument()
+    expect(screen.queryByText(/mensaje enviado/i)).not.toBeInTheDocument()
   })
 })

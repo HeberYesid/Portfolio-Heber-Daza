@@ -14,6 +14,7 @@ const Chatbot = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY?.trim();
 
   const suggestedQuestions = [
     "¿Cuáles son tus habilidades técnicas?",
@@ -34,24 +35,13 @@ const Chatbot = () => {
   }, [messages, isLoading]);
 
   const sendMessage = async (messageText: string) => {
-    if (!messageText.trim() || isLoading) return;
+    if (!apiKey || !messageText.trim() || isLoading) return;
 
     const newMessages = [...messages, { role: 'user', content: messageText } as Message];
     setMessages(newMessages);
     setIsLoading(true);
 
     try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-
-      if (!apiKey) {
-        setMessages(prev => [...prev, {
-          role: 'model',
-          content: 'Error: La API Key no está configurada. Por favor configura VITE_GEMINI_API_KEY en tu archivo .env'
-        }]);
-        setIsLoading(false);
-        return;
-      }
-
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({
         model: 'gemini-flash-latest',
@@ -151,8 +141,10 @@ const Chatbot = () => {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <div className="led-indicator bg-led-green animate-led-blink" />
-            <span className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em]">ONLINE</span>
+            <div className={`led-indicator ${apiKey ? 'bg-led-green animate-led-blink' : 'bg-led-amber'}`} />
+            <span className="font-mono text-[0.5rem] text-silkscreen-dim tracking-[0.2em]">
+              {apiKey ? 'DISPONIBLE' : 'SIN CONFIGURAR'}
+            </span>
           </div>
         </div>
 
@@ -160,7 +152,12 @@ const Chatbot = () => {
           ref={chatContainerRef}
           className="flex-1 overflow-y-auto p-4 space-y-5 bg-substrate/50 scroll-smooth"
         >
-          {messages.length === 0 && (
+          {!apiKey ? (
+            <div className="flex h-full flex-col items-center justify-center gap-3 text-center px-4">
+              <p className="text-sm text-silkscreen-dim">El asistente no está disponible en este momento.</p>
+              <a className="text-sm text-trace-bright underline" href="#contact">Ir a Contacto</a>
+            </div>
+          ) : messages.length === 0 && (
             <div className="flex flex-col items-center justify-center h-full text-center space-y-8 px-4">
               <div className="flex flex-col items-center space-y-4">
                 <div className="w-14 h-14 rounded-pad border-2 border-trace/20 bg-trace/5 flex items-center justify-center">
@@ -252,15 +249,16 @@ const Chatbot = () => {
           )}
         </div>
 
-        <div className="p-4 bg-substrate-raised border-t border-trace/10">
+        {apiKey && <div className="p-4 bg-substrate-raised border-t border-trace/10">
           <form onSubmit={handleSubmit} className="flex gap-2 max-w-4xl mx-auto">
-            <div className="flex-1 relative">
+            <div className="min-w-0 flex-1">
               <input
                 type="text"
+                aria-label="Pregunta para el asistente"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Escribe tu pregunta aquí..."
-                className="w-full px-4 py-2.5 rounded-pad border border-via-ring/30 bg-substrate text-sm text-silkscreen placeholder:text-silkscreen-dim/50 focus:border-trace/50 focus:outline-none transition-colors font-mono tracking-wider"
+                className="w-full px-4 py-2.5 rounded-pad border border-via-ring/30 bg-substrate text-base sm:text-sm text-silkscreen placeholder:text-silkscreen-dim focus:border-trace/50 transition-colors font-mono tracking-wider"
                 disabled={isLoading}
               />
             </div>
@@ -279,7 +277,7 @@ const Chatbot = () => {
               )}
             </button>
           </form>
-        </div>
+        </div>}
       </div>
     </section>
   );
