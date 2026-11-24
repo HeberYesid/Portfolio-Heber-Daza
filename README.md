@@ -32,7 +32,7 @@ La aplicación actual funciona como un portafolio público de una sola superfici
 
 ## Comandos
 
-Requisitos: Node.js `^20.19.0` o `>=22.12.0` (Vite 7) y npm. La vista pública se puede iniciar sin una clave de Gemini. El chatbot lee `VITE_GEMINI_API_KEY` y no puede responder sin ella. Como el código la usa en el navegador, no pongas una credencial privada en esa variable ni la incluyas en un build público.
+Requisitos: Node.js `^20.19.0` o `>=22.12.0` (Vite 7) y npm.
 
 La sección de noticias usa `/api/news`. Coloca `GNEWS_API_KEY` (sin prefijo `VITE_`) en tu `.env` local para `dev` y `preview`, o como variable de servidor en Vercel. Si tenías `VITE_GNEWS_API_KEY`, renómbrala en tu configuración local. Sin clave, el portafolio sigue disponible y la sección muestra que no hay noticias. El alojamiento estático necesita un backend para servir esta ruta.
 
@@ -46,7 +46,14 @@ npm run lint
 npm test
 ```
 
-El proyecto requiere `VITE_GEMINI_API_KEY` para las funciones del chatbot. No publiques su valor.
+## Disponibilidad del chatbot
+
+- **Orden:** Groq (`openai/gpt-oss-20b`) → OpenRouter (`recursive/flint-v1.0:free`, luego `openrouter/free` si no hay una respuesta válida) → Gemini opcional → respuestas locales. OpenRouter no usa modelos de pago; si devuelve `429`, ambos intentos comparten la pausa de cuota. Las claves son independientes: si falta alguna, se omite ese proveedor.
+- **Vercel:** configura `GROQ_API_KEY` y `OPENROUTER_API_KEY` únicamente como variables de servidor en **Production** y vuelve a desplegar. Deja `GEMINI_API_KEY` sin configurar si no quieres usar Gemini. Comprueba que la URL de producción permita acceso sin iniciar sesión.
+- **Local:** agrega las claves a `.env` y reinicia Vite. No uses el prefijo `VITE_`. Si una clave se incluyó antes en un build público, revócala y usa una nueva para el servidor.
+- **Sin proveedores:** si no hay clave, hay errores, se agota la cuota o el sitio solo sirve archivos estáticos, el chat muestra «Respuesta del portafolio · modo local». Estas respuestas cubren preguntas frecuentes; no sustituyen una conversación generativa.
+- **Límites:** no hace falta mantener un servidor encendido. Cada proveedor conserva su cuota. Las llamadas comparten un presupuesto de 8 segundos y se pausa por instancia al proveedor que responde `429`. El límite de 12 solicitudes por minuto por instancia protege de ráfagas, pero no limita el consumo global; aplica un límite compartido por IP para `POST /api/chat` antes de habilitar una clave de pago.
+- **Comprobación:** prueba en un entorno con una sola clave configurada a la vez y pregunta por Code Duel. Con cada proveedor debe aparecer una respuesta sin la etiqueta «modo local». Repite sin claves y verifica que aparezca la etiqueta y una respuesta del portafolio.
 
 
 ## 📄 Licencia

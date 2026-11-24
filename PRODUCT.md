@@ -36,13 +36,13 @@ Portafolio profesional de Heber Yesid Daza Toloza. Expone su perfil como Ingenie
 - Single-page portfolio con secciones: Hero, Sobre mí, Experiencia, Habilidades, Proyectos, Educación, Chatbot IA, Idiomas, Tech News, Contacto.
 - Modo oscuro PCB; no se ofrece una variante clara.
 - Contacto mediante el cliente de correo del visitante y enlaces directos a otros canales.
-- Chatbot impulsado por Google Gemini (gemini-flash-latest) que responde usando datos estructurados del perfil (PORTFOLIO_CONTEXT).
+- Chatbot con Groq, OpenRouter Free y Gemini opcional desde el servidor, con respuestas locales del perfil (PORTFOLIO_CONTEXT) como respaldo.
 - Diseño responsivo (mobile, tablet, desktop).
 - Tests automatizados con Vitest y React Testing Library.
 - Deploy en Netlify y Vercel.
 
 **Constraints:**
-- La API key de Gemini es una variable de entorno (`VITE_GEMINI_API_KEY`) — el chatbot depende de que esté configurada.
+- Las claves de los proveedores son exclusivas del servidor; sin ellas funcionan las respuestas locales.
 - Contenido en español como idioma principal.
 - Datos profesionales (nombre, experiencia, proyectos, educación) son hechos reales y no deben inventarse ni alterarse.
 
