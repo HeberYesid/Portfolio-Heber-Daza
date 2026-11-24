@@ -1,4 +1,4 @@
-import { MAX_HISTORY, MAX_QUESTION_LENGTH, MAX_REPLY_LENGTH, type ChatTurn } from '../src/utils/chatContract';
+import { MAX_HISTORY, MAX_QUESTION_LENGTH, MAX_REPLY_LENGTH, isChatModelId, type ChatProvider, type ChatTurn, type GeneratedChatReply } from '../src/utils/chatContract';
 import { PORTFOLIO_CONTEXT } from '../src/utils/portfolioContext';
 
 const MAX_BODY_BYTES = 80 * 1024;
@@ -11,10 +11,15 @@ const OPENROUTER_PRIMARY = 'recursive/flint-v1.0:free';
 type Provider = {
   url: string;
   key: string;
-  kind: 'groq' | 'openrouter' | 'gemini';
+  kind: ChatProvider;
   model: string;
   quota: { pausedUntil: number };
 };
+
+type FailedAttempt = {
+  provider: Provider['kind'];
+  attempt: 'primary' | 'fallback';
+} & ({ reason: 'http'; status: number } | { reason: 'timeout' | 'network' | 'invalid_json' | 'incomplete' });
 
 function provider(kind: Provider['kind'], key: string | undefined, url: string, ...models: string[]): Provider[] {
   const quota = { pausedUntil: 0 };
@@ -47,6 +52,8 @@ function providerRequest(target: Provider, turns: ChatTurn[]): { headers: Record
 
 function providerAnswer(kind: Provider['kind'], data: unknown) {
   const result = data as {
+    model?: unknown;
+    modelVersion?: unknown;
     choices?: Array<{ finish_reason?: string; message?: { content?: unknown; refusal?: unknown } }>;
     candidates?: Array<{ finishReason?: string; content?: { parts?: Array<{ text?: string; thought?: boolean }> } }>;
     promptFeedback?: { blockReason?: string };
@@ -55,12 +62,12 @@ function providerAnswer(kind: Provider['kind'], data: unknown) {
     const candidate = result?.candidates?.[0];
     if (result?.promptFeedback?.blockReason || candidate?.finishReason === 'SAFETY') return { blocked: true };
     if (candidate?.finishReason !== 'STOP') return {};
-    return { answer: candidate.content?.parts?.filter(part => !part.thought).map(part => part.text ?? '').join('').trim() };
+    return { answer: candidate.content?.parts?.filter(part => !part.thought).map(part => part.text ?? '').join('').trim(), model: result?.modelVersion };
   }
   const choice = result?.choices?.[0];
   if (choice?.finish_reason === 'content_filter' || choice?.message?.refusal) return { blocked: true };
   const content = choice?.message?.content;
-  return choice?.finish_reason === 'stop' && typeof content === 'string' ? { answer: content.trim() } : {};
+  return choice?.finish_reason === 'stop' && typeof content === 'string' ? { answer: content.trim(), model: result?.model } : {};
 }
 
 function quotaResume(headers: Headers, now: number) {
@@ -149,30 +156,42 @@ export function createChatHandler(env: ChatEnv) {
     const turns: ChatTurn[] = [...history.map(({ role, content }: ChatTurn) => ({ role, content: content.slice(0, 800) })),
       { role: 'user', content: question.trim() }];
     const eligible = providers.filter(target => target.quota.pausedUntil <= now);
+    const failures: FailedAttempt[] = [];
     for (const [index, target] of eligible.entries()) {
       const remaining = TOTAL_TIMEOUT_MS - (Date.now() - now);
       if (remaining <= 0 || target.quota.pausedUntil > Date.now()) continue;
       // Reserva tiempo para cada alternativa sin quitarle todo el margen al proveedor actual.
       const alternatives = eligible.length - index - 1;
       const timeout = Math.max(1, Math.floor(Math.max(remaining / (alternatives + 1), remaining - 3000 * alternatives)));
+      const signal = AbortSignal.timeout(timeout);
+      const attempt = { provider: target.kind, attempt: target.model === 'openrouter/free' ? 'fallback' : 'primary' } as const;
       try {
         const { headers, body } = providerRequest(target, turns);
         const upstream = await fetch(target.url, {
           method: 'POST', headers: { 'Content-Type': 'application/json', ...headers },
-          redirect: 'error', signal: AbortSignal.timeout(timeout), body: JSON.stringify(body),
+          redirect: 'error', signal, body: JSON.stringify(body),
         });
         if (upstream.status === 429) target.quota.pausedUntil = quotaResume(upstream.headers, Date.now());
         if (!upstream.ok) {
+          failures.push({ ...attempt, reason: 'http', status: upstream.status });
           void upstream.body?.cancel().catch(() => {});
           continue;
         }
-        const { answer, blocked } = providerAnswer(target.kind, await upstream.json());
+        const { answer, blocked, model } = providerAnswer(target.kind, await upstream.json());
         if (blocked) return json(422, { error: 'No hay una respuesta generada para esa pregunta.' });
-        if (answer) return json(200, { answer: answer.slice(0, MAX_REPLY_LENGTH) });
-      } catch {
-        // Una red lenta o una respuesta inválida no bloquea al siguiente proveedor.
+        if (answer) {
+          const reply: GeneratedChatReply = { answer: answer.slice(0, MAX_REPLY_LENGTH), provider: target.kind };
+          if (isChatModelId(model)) reply.model = model;
+          return json(200, reply);
+        }
+        failures.push({ ...attempt, reason: 'incomplete' });
+      } catch (error) {
+        const timedOut = signal.aborted || (error instanceof DOMException && error.name === 'TimeoutError');
+        failures.push({ ...attempt, reason: timedOut ? 'timeout' : error instanceof SyntaxError ? 'invalid_json' : 'network' });
       }
     }
+    // Solo metadatos predefinidos: no registrar preguntas, historial, claves ni cuerpos del proveedor.
+    if (failures.length) console.warn('[chat] Sin respuesta generada', failures);
     const earliest = Math.min(...providers.map(target => target.quota.pausedUntil));
     if (earliest > Date.now()) return json(429, { error: 'Los proveedores alcanzaron su límite temporal.' }, {
       'Retry-After': String(Math.ceil((earliest - Date.now()) / 1000)),

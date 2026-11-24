@@ -1,12 +1,15 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Loader2, Sparkles, MessageSquare } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
-import { MAX_HISTORY, MAX_QUESTION_LENGTH, MAX_REPLY_LENGTH, type ChatTurn } from '../utils/chatContract';
+import { MAX_HISTORY, MAX_QUESTION_LENGTH, MAX_REPLY_LENGTH, isChatModelId, type ChatProvider, type ChatTurn } from '../utils/chatContract';
 import { answerLocally } from '../utils/localChat';
 
 interface Message extends ChatTurn {
   local?: boolean;
+  source?: string;
 }
+
+const providerLabels: Record<ChatProvider, string> = { groq: 'Groq', openrouter: 'OpenRouter', gemini: 'Gemini' };
 
 const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -46,6 +49,7 @@ const Chatbot = () => {
     setIsLoading(true);
 
     let answer: string | undefined;
+    let source: string | undefined;
     try {
       if (Date.now() >= retryAt.current) {
         const history = messages.slice(-MAX_HISTORY).map(({ role, content }) => ({ role, content }));
@@ -56,8 +60,14 @@ const Chatbot = () => {
           signal: AbortSignal.timeout(10_000),
         });
         if (response.ok) {
-          const data = await response.json() as { answer?: unknown };
-          if (typeof data?.answer === 'string' && data.answer.trim()) answer = data.answer.trim().slice(0, MAX_REPLY_LENGTH);
+          const data = await response.json() as { answer?: unknown; provider?: unknown; model?: unknown } | null;
+          if (typeof data?.answer === 'string' && data.answer.trim()) {
+            answer = data.answer.trim().slice(0, MAX_REPLY_LENGTH);
+            const { provider, model } = data;
+            source = provider === 'groq' || provider === 'openrouter' || provider === 'gemini'
+              ? `${providerLabels[provider]} · ${isChatModelId(model) ? model : 'modelo no informado'}`
+              : 'Respuesta generada · modelo no informado';
+          }
         } else if (response.status !== 422) {
           const seconds = Number(response.headers.get('Retry-After'));
           retryAt.current = Date.now() + (response.status === 429 && seconds > 0 ? Math.min(seconds, 300) : 30) * 1000;
@@ -66,7 +76,7 @@ const Chatbot = () => {
     } catch {
       retryAt.current = Date.now() + 30_000;
     } finally {
-      setMessages(prev => [...prev, { role: 'model', content: answer ?? answerLocally(question), local: !answer }]);
+      setMessages(prev => [...prev, { role: 'model', content: answer ?? answerLocally(question), local: !answer, source }]);
       setIsLoading(false);
       busy.current = false;
     }
@@ -187,6 +197,9 @@ const Chatbot = () => {
                       >
                         {message.content}
                       </ReactMarkdown>
+                      {message.source && (
+                        <p className="mt-2 text-xs text-silkscreen-dim [overflow-wrap:anywhere]">{message.source}</p>
+                      )}
                     </div>
                   ) : (
                     <p>{message.content}</p>

@@ -52,8 +52,10 @@ npm test
 - **Vercel:** configura `GROQ_API_KEY` y `OPENROUTER_API_KEY` únicamente como variables de servidor en **Production** y vuelve a desplegar. Deja `GEMINI_API_KEY` sin configurar si no quieres usar Gemini. Comprueba que la URL de producción permita acceso sin iniciar sesión.
 - **Local:** agrega las claves a `.env` y reinicia Vite. No uses el prefijo `VITE_`. Si una clave se incluyó antes en un build público, revócala y usa una nueva para el servidor.
 - **Sin proveedores:** si no hay clave, hay errores, se agota la cuota o el sitio solo sirve archivos estáticos, el chat muestra «Respuesta del portafolio · modo local». Estas respuestas cubren preguntas frecuentes; no sustituyen una conversación generativa.
+- **Modelo visible:** cada respuesta generada muestra el proveedor y el modelo que este reportó. Si el proveedor no identifica el modelo concreto, aparece «modelo no informado».
 - **Límites:** no hace falta mantener un servidor encendido. Cada proveedor conserva su cuota. Las llamadas comparten un presupuesto de 8 segundos y se pausa por instancia al proveedor que responde `429`. El límite de 12 solicitudes por minuto por instancia protege de ráfagas, pero no limita el consumo global; aplica un límite compartido por IP para `POST /api/chat` antes de habilitar una clave de pago.
-- **Comprobación:** prueba en un entorno con una sola clave configurada a la vez y pregunta por Code Duel. Con cada proveedor debe aparecer una respuesta sin la etiqueta «modo local». Repite sin claves y verifica que aparezca la etiqueta y una respuesta del portafolio.
+- **Comprobación:** con una sola clave configurada a la vez, pregunta «¿En cuál de sus proyectos ejecuta código enviado por usuarios?» y luego «¿Y cómo aísla esa ejecución?». La respuesta debe mencionar Code Duel y después Docker, sin la etiqueta «modo local». Repite sin claves y verifica que aparezca esa etiqueta en las respuestas de respaldo.
+- **Diagnóstico:** revisa `POST /api/chat` en la pestaña Red del navegador. Un `503` de la API indica que no hay proveedores configurados y un `429` indica un límite temporal. Si ves `502`, busca `[chat] Sin respuesta generada` en los logs de la función de Vercel: indica el proveedor, el intento y el motivo (estado HTTP, timeout, error de red o respuesta inválida/incompleta), sin registrar la conversación ni las claves.
 
 
 ## 📄 Licencia

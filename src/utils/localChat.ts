@@ -12,6 +12,19 @@ const projects = (section('Proyectos Destacados', 'Instrucciones para tus respue
       .replace(/^- (GitHub|Demo): (https:\/\/\S+)$/gm, '- [$1]($2)') }] : [];
   });
 const normalize = (text: string) => text.toLowerCase().normalize('NFD').replace(/\p{M}/gu, '');
+const languages = section('Idiomas', 'Habilidades Técnicas (Hard Skills)');
+const tools = section('Habilidades Técnicas (Hard Skills)', 'Habilidades Blandas (Soft Skills)')
+  ?.split('\n').find(line => line.startsWith('- Herramientas, IA & Arquitectura:'))?.slice(2);
+
+function hasTypo(words: string[], keyword: string, allowSubstitution = false) {
+  return words.some(word => {
+    if (word.length !== keyword.length) return false;
+    const mismatches = [...keyword].flatMap((letter, index) => letter === word[index] ? [] : [index]);
+    const [first, second] = mismatches;
+    return (allowSubstitution && mismatches.length === 1)
+      || (mismatches.length === 2 && second === first + 1 && word[first] === keyword[second] && word[second] === keyword[first]);
+  });
+}
 
 export function answerLocally(question: string): string {
   const text = normalize(question);
@@ -24,6 +37,7 @@ export function answerLocally(question: string): string {
   if (/\b(proyectos?|portafolio)\b/.test(text)) {
     return `Proyectos destacados:\n\n${projects.map(({ name }) => `- ${name}`).join('\n')}`;
   }
+  if (tools && /\bherramientas?\b/.test(text)) return tools;
   const topics = [
     [/\b(habilidades?|tecnologias?|stack|lenguajes?|backend)\b/, 'Habilidades Técnicas (Hard Skills)', 'Habilidades Blandas (Soft Skills)'],
     [/\b(experiencia|laboral|excomin|empleos?)\b/, 'Experiencia Laboral', 'Educación'],
@@ -34,5 +48,9 @@ export function answerLocally(question: string): string {
     const answer = pattern.test(text) && section(start, end);
     if (answer) return answer;
   }
-  return 'No encontré ese dato en las respuestas del portafolio. Puedes preguntarme por proyectos, habilidades, experiencia, estudios o [contactar a Heber](#contact).';
+  // Primero las coincidencias exactas; los errores de escritura solo se toleran en estos temas.
+  const words = text.match(/\p{L}+/gu) ?? [];
+  if (languages && hasTypo(words, 'idiomas')) return languages;
+  if (tools && hasTypo(words, 'herramientas', true)) return tools;
+  return 'No encontré ese dato en las respuestas del portafolio. Puedes preguntarme por proyectos, herramientas, idiomas, experiencia, estudios o [contactar a Heber](#contact).';
 }
