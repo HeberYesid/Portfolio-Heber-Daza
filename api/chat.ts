@@ -1,5 +1,5 @@
-import { MAX_HISTORY, MAX_QUESTION_LENGTH, MAX_REPLY_LENGTH, isChatModelId, type ChatProvider, type ChatTurn, type GeneratedChatReply } from '../src/utils/chatContract';
-import { PORTFOLIO_CONTEXT } from '../src/utils/portfolioContext';
+import { MAX_HISTORY, MAX_QUESTION_LENGTH, MAX_REPLY_LENGTH, isChatModelId, type ChatProvider, type ChatTurn, type GeneratedChatReply } from '../src/utils/chatContract.js';
+import { PORTFOLIO_CONTEXT } from '../src/utils/portfolioContext.js';
 
 const MAX_BODY_BYTES = 80 * 1024;
 const WINDOW_MS = 60_000;
